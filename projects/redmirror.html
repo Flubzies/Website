@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RedMirror | Riley Clarke</title>
-  <meta name="description" content="RedMirror — a networked real-time strategy prototype built in Unity with server-authoritative multiplayer, a custom fog of war, and a data-driven ability system. Development breakdown by Riley Clarke.">
+  <meta name="description" content="RedMirror, a networked real-time strategy prototype built in Unity with server-authoritative multiplayer, a custom fog of war, and a data-driven ability system. Development breakdown by Riley Clarke.">
   <link rel="icon" href="../Assets/favicon.png">
   <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
@@ -33,8 +33,8 @@
         <span class="project-date">Solo Project &middot; 2021</span>
         <h1>RedMirror</h1>
         <p class="devlog-intro">
-          RedMirror is a networked real-time strategy prototype &mdash; think a
-          slice of StarCraft/Command &amp; Conquer&rsquo;s core loop &mdash; built
+          RedMirror is a networked real-time strategy prototype (think a
+          slice of StarCraft/Command &amp; Conquer&rsquo;s core loop) built
           from scratch in Unity to explore server-authoritative multiplayer
           architecture, a data-driven ability framework, and a custom fog of war
           system. It never shipped publicly; it was a personal deep-dive into
@@ -51,7 +51,7 @@
         </ul>
       </header>
 
-      <img class="devlog-hero-img" src="../Assets/redmirror/hero-gameplay.webp" alt="RedMirror gameplay — RTS units moving and fighting under the custom fog of war" loading="lazy">
+      <img class="devlog-hero-img" src="../Assets/redmirror/hero-gameplay.webp" alt="RedMirror gameplay: RTS units moving and fighting under the custom fog of war" loading="lazy">
 
       <section class="devlog-section">
         <hr class="devlog-divider">
@@ -59,13 +59,13 @@
         <p>
           I built RedMirror solo, acting as programmer, network architect, and
           designer. The goal was to strip an RTS down to its core interaction
-          loop &mdash; select, command, produce, fight &mdash; and build every
+          loop (select, command, produce, fight) and build every
           layer of it properly networked from day one, rather than bolting
           multiplayer on afterwards.
         </p>
         <p>
-          Everything below &mdash; selection, abilities, combat, fog of war,
-          the economy &mdash; runs across a server-authoritative connection
+          Everything below (selection, abilities, combat, fog of war,
+          the economy) runs across a server-authoritative connection
           using Mirror, with dedicated Windows client and headless Linux
           server builds.
         </p>
@@ -81,12 +81,12 @@
           clients request actions and receive the results. When a unit is
           spawned, the owning client gets a targeted RPC to finish local setup
           (team colours, ability wiring) while every client gets a general RPC
-          for the shared visuals &mdash; a deliberate authority/ownership split
+          for the shared visuals, a deliberate authority/ownership split
           rather than a full state sync.
         </p>
         <p>
           A custom <code>RMNetworkManager</code> and <code>RMNetworkRoomManager</code>
-          support both direct-connect and a full lobby flow &mdash; ready-up,
+          support both direct-connect and a full lobby flow: ready-up,
           host-triggered start, and a server-driven countdown into the match.
           The first two connections are assigned as players (Team 1 / Team 2
           automatically); anyone else who connects is dropped into a
@@ -133,14 +133,14 @@
           practice: the server-only <code>Cmd</code> spawns each unit's
           ability objects and hands ownership to the right connection, the
           <code>Rpc</code> sets team-coloured materials on every client, and
-          the <code>TargetRpc</code> &mdash; guarded by a
-          <code>hasAuthority</code> check &mdash; is where the owning client
+          the <code>TargetRpc</code> (guarded by a
+          <code>hasAuthority</code> check) is where the owning client
           spawns its own field-of-view mesh, since no one else needs it.
         </p>
         <p>
           I also built and deployed a dedicated headless Linux server build
           alongside the Windows client, with upload/login scripts for pushing
-          builds to the server &mdash; an actual deploy pipeline rather than
+          builds to the server, an actual deploy pipeline rather than
           relying on Unity's built-in host mode.
         </p>
       </section>
@@ -152,16 +152,16 @@
           Abilities follow the same static/dynamic data split I used on Niloc,
           adapted for a networked context. Each ability is a
           <code>ScriptableObject</code> (<code>AbilityStaticData</code>)
-          holding designer-facing config &mdash; name, icon, hotkey, cursor
-          mode, cooldown &mdash; completely separate from its behaviour.
+          holding designer-facing config (name, icon, hotkey, cursor
+          mode, cooldown) completely separate from its behaviour.
         </p>
         <p>
           Behaviour lives in a networked <code>AbilityDynamicData</code>
           subclass (movement, projectile, create-unit, set-rally-point, stop),
           instantiated per unit and spawned individually over the network. A
-          simple template-method flow &mdash; <code>PrePerformAbility</code>
-          &rarr; <code>PerformAbility</code> &rarr; <code>PostSelectableSpawned</code>
-          &mdash; meant new abilities could be added without touching the
+          simple template-method flow (<code>PrePerformAbility</code>
+          &rarr; <code>PerformAbility</code> &rarr; <code>PostSelectableSpawned</code>)
+          meant new abilities could be added without touching the
           selection or input code at all.
         </p>
         <figure class="devlog-diagram">
@@ -193,12 +193,12 @@
             <line x1="370" y1="75" x2="389" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#rm-ability-arrow)"></line>
             <line x1="560" y1="75" x2="579" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#rm-ability-arrow)"></line>
           </svg>
-          <figcaption>Every ability runs the same template-method chain &mdash; <code>PrePerformAbility()</code> stages the shared data, <code>PerformAbility()</code> runs the actual effect, and the optional <code>PostSelectableSpawned()</code> hook lets an ability act on whatever it just spawned &mdash; so new abilities plug in without touching selection or input code.</figcaption>
+          <figcaption>Every ability runs the same template-method chain: <code>PrePerformAbility()</code> stages the shared data, <code>PerformAbility()</code> runs the actual effect, and the optional <code>PostSelectableSpawned()</code> hook lets an ability act on whatever it just spawned, so new abilities plug in without touching selection or input code.</figcaption>
         </figure>
         <img class="devlog-img" src="../Assets/redmirror/code-ability-dynamic-data.png" alt="Code screenshot of the AbilityDynamicData base class showing PrePerformAbility, the virtual PerformAbility, and the optional PostSelectableSpawned hook" loading="lazy">
         <p>
           <code>AbilityDynamicData</code> is the networked base class every
-          ability subclasses &mdash; movement, projectile, create-unit,
+          ability subclasses: movement, projectile, create-unit,
           set-rally-point, and stop each override <code>PerformAbility()</code>
           with their own effect while sharing the same staging and
           initialization logic.
@@ -219,7 +219,7 @@
         <p>
           The command card UI rebuilds its ability icons dynamically based on
           whatever is currently selected, backed by a small resource and
-          supply economy &mdash; a passive resource tick plus per-unit-type
+          supply economy: a passive resource tick plus per-unit-type
           cost and supply-cap checks before production is allowed. Structures
           support rally points, visualised with a live line renderer, and
           group orders compute a centroid and leader offset so units move
@@ -255,7 +255,7 @@
         <p>
           It's a genuinely custom geometry algorithm rather than a toggled
           shader effect, and it was one of the more satisfying systems to get
-          right &mdash; especially tuning the edge-resolve iterations so
+          right, especially tuning the edge-resolve iterations so
           shadows didn't visibly "pop" as units moved.
         </p>
       </section>
@@ -264,7 +264,7 @@
         <hr class="devlog-divider">
         <h2>Evaluation</h2>
         <p>
-          RedMirror stayed a prototype &mdash; the scope of a full RTS
+          RedMirror stayed a prototype: the scope of a full RTS
           (balancing, content, a real economy, matchmaking) was always bigger
           than a solo side project could reasonably finish. What I got out of
           it was worth building anyway: hands-on experience with
@@ -275,7 +275,7 @@
         </p>
         <p>
           If I picked it back up, the ability framework is the piece I'd
-          revisit first &mdash; moving cooldown and resource-cost data out to
+          revisit first: moving cooldown and resource-cost data out to
           the server more strictly so a desync or a modified client can't
           bend the rules, something that mattered less as a solo prototype
           but would be a hard requirement before this went anywhere near
@@ -287,7 +287,7 @@
         <hr class="devlog-divider">
         <p>
           RedMirror isn't publicly released and doesn't have a build or
-          source link to share right now &mdash; this write-up covers the
+          source link to share right now. This write-up covers the
           systems as they stand in the project.
         </p>
       </section>
@@ -298,7 +298,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer</p>
     </div>
   </footer>
 

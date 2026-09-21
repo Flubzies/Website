@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WorldCraft | Riley Clarke</title>
-  <meta name="description" content="WorldCraft — a Minecraft-inspired procedural voxel terrain demo built from scratch in Unreal Engine 4 with C++. Development breakdown by Riley Clarke.">
+  <meta name="description" content="WorldCraft, a Minecraft-inspired procedural voxel terrain demo built from scratch in Unreal Engine 4 with C++. Development breakdown by Riley Clarke.">
   <link rel="icon" href="../Assets/favicon.png">
   <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
@@ -62,7 +62,7 @@
           sampled from simplex noise. I built on top of Sebastian Lague's
           tutorial series on the subject and DevDad's Simplex Noise plugin
           for the underlying noise function, then extended both
-          considerably &mdash; reworking the code to be more extensible,
+          considerably, reworking the code to be more extensible,
           more easily configurable from the editor, and more efficient at
           runtime.
         </p>
@@ -75,7 +75,7 @@
         <p>
           The world is divided into <code>AChunk</code> actors, each owning
           a flat <code>TArray&lt;int32&gt;</code> of voxel IDs sized by a
-          shared <code>FChunkSpawn</code> config struct &mdash; XY size,
+          shared <code>FChunkSpawn</code> config struct: XY size,
           Z (height) size, a base ground height, and the world-space size
           of an individual voxel. A 3D position within the chunk flattens
           to a single array index with
@@ -96,7 +96,7 @@
         <h2>Multi-Octave Simplex Noise</h2>
         <p>
           Ground height per column comes from an <code>FOctaves</code> array
-          exposed to the editor &mdash; each octave has its own X/Y sampling
+          exposed to the editor: each octave has its own X/Y sampling
           multiplier, weight, and an optional clamp range, so a designer can
           layer a broad, low-frequency octave for rolling hills with sharper
           high-frequency octaves for detail, entirely from the inspector
@@ -121,7 +121,7 @@
           right texture. Rather than emitting a full cube per solid voxel,
           <code>UpdateMesh()</code> checks each of a voxel's six neighbours
           and only emits the quad for a face whose neighbour is air (or off
-          the edge of the chunk) &mdash; a simple hidden-face culling pass
+          the edge of the chunk), a simple hidden-face culling pass
           that keeps triangle counts down on a world made of tens of
           thousands of voxels per chunk.
         </p>
@@ -141,7 +141,7 @@
           canopies don't come out perfectly spherical.
         </p>
         <p>
-          Grass doesn't get baked into the chunk mesh at all &mdash; it's
+          Grass doesn't get baked into the chunk mesh at all: it's
           flagged as its own voxel ID and routed through a Blueprint-native
           <code>AddInstanceVoxel</code> event, which drops an Instanced
           Static Mesh instance at that position instead. Thousands of grass
@@ -160,7 +160,7 @@
           terrain, vegetation, and a mesh pipeline efficient enough to
           stream new chunks without stuttering. It's openly built on
           Sebastian Lague's tutorial series and DevDad's noise plugin, and
-          I'd credit both rather than pretend otherwise &mdash; the value I
+          I'd credit both rather than pretend otherwise. The value I
           added was in making the system more extensible and configurable,
           and in the face-culling and instancing work to keep it
           performant.
@@ -192,7 +192,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer</p>
     </div>
   </footer>
 

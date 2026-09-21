@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plucky | Riley Clarke</title>
-  <meta name="description" content="Plucky — a VR puzzle game about chaperoning AI bots through hand-built terrain, built solo in Unity. Development breakdown by Riley Clarke.">
+  <meta name="description" content="Plucky, a VR puzzle game about chaperoning AI bots through hand-built terrain, built solo in Unity. Development breakdown by Riley Clarke.">
   <link rel="icon" href="../Assets/favicon.png">
   <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
@@ -34,7 +34,7 @@
         <h1>Plucky</h1>
         <p class="devlog-intro">
           Plucky is a VR puzzle game about chaperoning AI bots through a
-          level towards the exit &mdash; players reshape the terrain by
+          level towards the exit: players reshape the terrain by
           placing blocks to build safe paths across hazards the bots can't
           cross on their own. I built the entire project solo over four
           months as my 2nd-year university portfolio piece.
@@ -69,7 +69,7 @@
           simple to explain and genuinely tricky to solve: a bot walks
           itself toward the level exit, but the ground in front of it isn't
           always safe, so the player reaches into the world in VR and drops
-          blocks to build a path &mdash; bridging gaps, covering hazards,
+          blocks to build a path: bridging gaps, covering hazards,
           steering the bot around obstacles it can't handle on its own.
         </p>
         <video class="devlog-img" src="../Assets/plucky/gameplay-02.mp4" autoplay loop muted playsinline></video>
@@ -81,7 +81,7 @@
         <p>
           Blocks are built from a combination of Prefabs and
           ScriptableObjects, sharing an abstract base class so every block
-          type &mdash; safe ground, bridges, hazards &mdash; plugs into the
+          type (safe ground, bridges, hazards) plugs into the
           same placement and validation logic without the level or the
           player needing to know which concrete type it's holding. A
           singleton <code>LevelManager</code> owns loading levels at
@@ -95,7 +95,7 @@
         <h2>Bot AI</h2>
         <p>
           The bots move using a switch-case statement over the blocks
-          adjacent to them &mdash; a rudimentary finite state machine that
+          adjacent to them, a rudimentary finite state machine that
           decides the bot's next step from what's around it, rather than
           anything path-planned or predictive. It works, and it's simple to
           extend with new block types, but I'd be the first to admit the
@@ -112,7 +112,7 @@
         <p>
           Planning wasn't something I put enough effort into early on, and
           it cost me time I didn't need to lose. Picking up HacknPlan
-          partway through the project made a real difference &mdash; by the
+          partway through the project made a real difference, by the
           end I was using it to track tasks properly instead of working
           from memory. I also kept a weekly test sheet covering every
           feature in the game, checking off what still worked as new
@@ -138,8 +138,8 @@
         <hr class="devlog-divider">
         <p>
           A playable build and the full source are both up on
-          <a href="https://github.com/Flubz/Plucky" target="_blank" rel="noopener">GitHub</a>
-          &mdash; grab the
+          <a href="https://github.com/Flubz/Plucky" target="_blank" rel="noopener">GitHub</a>,
+          grab the
           <a href="https://github.com/Flubz/Plucky/raw/master/Builds/Plucky.zip" target="_blank" rel="noopener">build directly</a>
           if you just want to try it in VR.
         </p>
@@ -151,7 +151,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer</p>
     </div>
   </footer>
 
