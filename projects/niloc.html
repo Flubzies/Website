@@ -54,6 +54,8 @@
         </div>
       </header>
 
+      <img class="devlog-hero-img" src="../Assets/niloc/hero-gameplay.webp" alt="Niloc gameplay — two players fighting with ability effects in the arena" loading="lazy">
+
       <div class="video-embed">
         <iframe src="https://www.youtube.com/embed/sVGhW0w5CEs" title="Niloc gameplay" loading="lazy" allowfullscreen></iframe>
       </div>
@@ -103,17 +105,13 @@
           needed &mdash; and adopted it as the base of our ability system.
         </p>
 
-        <div class="media-slot" data-caption="Screenshot: abstract Ability Framework base class">
-          <span>Code screenshot &mdash; Ability Framework base class</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/code-ability-base-class.png" alt="Code screenshot of the abstract Ability ScriptableObject base class" loading="lazy">
         <p>
           The class is abstract, forcing every ability to derive from it, with
           properties used to enforce better encapsulation.
         </p>
 
-        <div class="media-slot" data-caption="Screenshot: player &harr; ability communication interface">
-          <span>Code screenshot &mdash; player/ability interface</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/diagram-ability-interface.png" alt="Diagram showing player classes, the player-ability interface, and the abstract ability base class" loading="lazy">
         <p>
           Player and ability communicate through an interface, holding to the
           interface segregation principle &mdash; which made it far easier to
@@ -128,18 +126,18 @@
           control, buffs/debuffs, and support.
         </p>
         <div class="ability-grid">
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Rock Barrage</h4><p>Cast a barrage of rocks towards the enemy.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Ice Shard</h4><p>Cast an ice shard that damages and slows the enemy on impact.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Fire Breath</h4><p>Cast a damaging cone in front of you while speeding you up.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Dash</h4><p>A generic dash ability &mdash; what more do you want?</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Heal</h4><p>Cast a burst heal that heals both you and your teammates.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Shield</h4><p>Cast an aura around yourself that protects you from all damage.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Lightning Beam</h4><p>A shot of concentrated lightning for massive damage at great distance.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Electric Stream</h4><p>A deadly burst of electricity in a cone at medium range.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Ice Wall</h4><p>Spawns a wall of ice that deals damage on spawn.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Charge</h4><p>Charge forward, dealing damage and knocking back enemies.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Fire Heart</h4><p>Cast an aura of fire around yourself, dealing massive damage.</p></div>
-          <div class="ability-card"><div class="ability-thumb"></div><h4>Siege</h4><p>Channel arcane power, then cast a mighty strike upon your foes.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-01-rock-barrage.webp" alt="Rock Barrage ability" loading="lazy"><h4>Rock Barrage</h4><p>Cast a barrage of rocks towards the enemy.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-02-ice-shard.webp" alt="Ice Shard ability" loading="lazy"><h4>Ice Shard</h4><p>Cast an ice shard that damages and slows the enemy on impact.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-03-fire-breath.webp" alt="Fire Breath ability" loading="lazy"><h4>Fire Breath</h4><p>Cast a damaging cone in front of you while speeding you up.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-04-dash.webp" alt="Dash ability" loading="lazy"><h4>Dash</h4><p>A generic dash ability &mdash; what more do you want?</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-05-heal.webp" alt="Heal ability" loading="lazy"><h4>Heal</h4><p>Cast a burst heal that heals both you and your teammates.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-06-shield.webp" alt="Shield ability" loading="lazy"><h4>Shield</h4><p>Cast an aura around yourself that protects you from all damage.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-07-lightning-beam.webp" alt="Lightning Beam ability" loading="lazy"><h4>Lightning Beam</h4><p>A shot of concentrated lightning for massive damage at great distance.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-08-electric-stream.webp" alt="Electric Stream ability" loading="lazy"><h4>Electric Stream</h4><p>A deadly burst of electricity in a cone at medium range.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-09-ice-wall.webp" alt="Ice Wall ability" loading="lazy"><h4>Ice Wall</h4><p>Spawns a wall of ice that deals damage on spawn.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-10-charge.webp" alt="Charge ability" loading="lazy"><h4>Charge</h4><p>Charge forward, dealing damage and knocking back enemies.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-11-fire-heart.webp" alt="Fire Heart ability" loading="lazy"><h4>Fire Heart</h4><p>Cast an aura of fire around yourself, dealing massive damage.</p></div>
+          <div class="ability-card"><img class="ability-thumb" src="../Assets/niloc/ability-12-siege.webp" alt="Siege ability" loading="lazy"><h4>Siege</h4><p>Channel arcane power, then cast a mighty strike upon your foes.</p></div>
         </div>
       </section>
 
@@ -152,36 +150,28 @@
           it, and correctly resetting state when it's re-enabled.
         </p>
 
-        <div class="media-slot" data-caption="Diagram: PoolManager architecture with multiple object pools">
-          <span>Diagram &mdash; PoolManager architecture</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/diagram-poolmanager.png" alt="Diagram of the PoolManager singleton owning multiple object pools" loading="lazy">
         <p>
           A <code>PoolManager</code> singleton owned multiple object pools,
           keeping every type of poolable object organized &mdash; pool particles
           being one example.
         </p>
 
-        <div class="media-slot" data-caption="Screenshot: pool object framework inheritance structure">
-          <span>Code screenshot &mdash; pool object inheritance</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/code-pool-object.png" alt="Code screenshot of the pool object inheritance structure (PoolObject, TimedPoolObject, PoolParticle, Projectile)" loading="lazy">
         <p>
           Projectiles and particle effects shared functionality and both
           returned to the pool automatically after their lifetime, callable from
           anywhere via the <code>PoolManager</code>.
         </p>
 
-        <div class="media-slot" data-caption="Screenshot: practical PoolManager usage example">
-          <span>Code screenshot &mdash; PoolManager in practice</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/code-poolmanager-usage.png" alt="Code screenshot of an ability requesting an object from the PoolManager" loading="lazy">
 
         <p>
           This made for a strong framework &mdash; abilities could be prototyped
           and iterated on very quickly, which made balancing far easier.
         </p>
 
-        <div class="media-slot" data-caption="Inspector view: Fire Breath ability variables">
-          <span>Screenshot &mdash; Fire Breath inspector variables</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/inspector-firebreath.png" alt="Unity inspector showing the Fire Breath ability's tunable variables" loading="lazy">
         <p>
           Every variable was exposed in the inspector, letting us rapidly test
           and balance changes on the fly.
@@ -220,9 +210,7 @@
           FBX static mesh pipeline, where a mesh can be turned into a
           primitive/convex collider automatically.
         </p>
-        <div class="media-slot" data-caption="Before/after: manual colliders vs. Complex Collider tool output">
-          <span>Screenshot &mdash; manual vs. automated collider generation</span>
-        </div>
+        <img class="devlog-img" src="../Assets/niloc/complex-collider-comparison.jpg" alt="Three-part comparison: manual collider mesh, the generated collider mesh, and the final in-game result" loading="lazy">
         <p>
           Colliders were originally built by hand &mdash; slow and tedious for
           the designers. The tool takes a mesh and generates all of its colliders
