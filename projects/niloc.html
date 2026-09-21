@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niloc | Riley Clarke</title>
+  <meta name="description" content="Niloc — a 2-4 player local multiplayer ability-based game built in Unity. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#resume">Resume</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Major Project &middot; 2019</span>
+        <h1>Niloc</h1>
+        <p class="devlog-intro">
+          For my final year university project, our team built Niloc: a 2&ndash;4
+          player local multiplayer game with elements similar to the MOBA genre
+          (think DOTA 2). Rather than picking a character with a fixed kit, players
+          choose their abilities from four selectable sets and mix and match to
+          whatever playstyle suits them.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity 2018.3 (HDRP)</li>
+          <li>Odin</li>
+          <li>DOTween</li>
+          <li>Rewired</li>
+          <li>FMOD</li>
+          <li>Cinemachine</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://sollara-games.itch.io/niloc" target="_blank" rel="noopener">Play on itch.io &rarr;</a>
+        </div>
+      </header>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/sVGhW0w5CEs" title="Niloc gameplay" loading="lazy" allowfullscreen></iframe>
+      </div>
+
+      <section class="devlog-section">
+        <h2>The Team</h2>
+        <div class="team-columns">
+          <div>
+            <h3>Core team</h3>
+            <ul class="team-list">
+              <li><strong>Riley Clarke</strong> &mdash; Programmer / Project Manager</li>
+              <li><strong>Scott Foey</strong> &mdash; Designer</li>
+              <li><strong>Stephen Ogbeiwi</strong> &mdash; Designer</li>
+              <li><strong>Alex Murphy</strong> &mdash; Designer</li>
+              <li><strong>Tom Broughton</strong> &mdash; Artist</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Outsourced</h3>
+            <ul class="team-list">
+              <li><strong>George Bailey</strong> &mdash; Concept Artist</li>
+              <li><strong>Kyle Harmieson</strong> &mdash; Audio Designer</li>
+              <li><strong>Lewis Kellet</strong> &mdash; Music Composer</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          I led as project manager and programmer, working in C# alongside Odin,
+          DOTween, Rewired, FMOD, Cinemachine, and a handful of minor plugins.
+          The game was built on Unity 2018.3's High Definition Render Pipeline.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <h2>The Ability Framework</h2>
+        <p>
+          This was the single most important task on the project. It needed to be
+          <strong>extensible</strong> &mdash; supporting a growing roster of new
+          abilities &mdash; <strong>flexible</strong>, so abilities weren't
+          restricted in unforeseen ways, and <strong>easily balanceable</strong>,
+          since any multiplayer game lives or dies on how quickly designers can
+          tune numbers.
+        </p>
+        <p>
+          After some research, I found an approach structured around Scriptable
+          Objects aimed at MOBA-style games &mdash; a close match for what we
+          needed &mdash; and adopted it as the base of our ability system.
+        </p>
+
+        <div class="media-slot" data-caption="Screenshot: abstract Ability Framework base class">
+          <span>Code screenshot &mdash; Ability Framework base class</span>
+        </div>
+        <p>
+          The class is abstract, forcing every ability to derive from it, with
+          properties used to enforce better encapsulation.
+        </p>
+
+        <div class="media-slot" data-caption="Screenshot: player &harr; ability communication interface">
+          <span>Code screenshot &mdash; player/ability interface</span>
+        </div>
+        <p>
+          Player and ability communicate through an interface, holding to the
+          interface segregation principle &mdash; which made it far easier to
+          debug and control exactly what data passed between the two.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <h2>The Abilities</h2>
+        <p>
+          Twelve abilities shipped in the final game, covering damage, crowd
+          control, buffs/debuffs, and support.
+        </p>
+        <div class="ability-grid">
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Rock Barrage</h4><p>Cast a barrage of rocks towards the enemy.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Ice Shard</h4><p>Cast an ice shard that damages and slows the enemy on impact.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Fire Breath</h4><p>Cast a damaging cone in front of you while speeding you up.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Dash</h4><p>A generic dash ability &mdash; what more do you want?</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Heal</h4><p>Cast a burst heal that heals both you and your teammates.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Shield</h4><p>Cast an aura around yourself that protects you from all damage.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Lightning Beam</h4><p>A shot of concentrated lightning for massive damage at great distance.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Electric Stream</h4><p>A deadly burst of electricity in a cone at medium range.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Ice Wall</h4><p>Spawns a wall of ice that deals damage on spawn.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Charge</h4><p>Charge forward, dealing damage and knocking back enemies.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Fire Heart</h4><p>Cast an aura of fire around yourself, dealing massive damage.</p></div>
+          <div class="ability-card"><div class="ability-thumb"></div><h4>Siege</h4><p>Channel arcane power, then cast a mighty strike upon your foes.</p></div>
+        </div>
+      </section>
+
+      <section class="devlog-section">
+        <h2>The Object Pooling Framework</h2>
+        <p>
+          Abilities needed a pooling system, both for performance and for a
+          consistent, aesthetically clean way to spawn and despawn effects &mdash;
+          for example, waiting for a particle effect to finish before disabling
+          it, and correctly resetting state when it's re-enabled.
+        </p>
+
+        <div class="media-slot" data-caption="Diagram: PoolManager architecture with multiple object pools">
+          <span>Diagram &mdash; PoolManager architecture</span>
+        </div>
+        <p>
+          A <code>PoolManager</code> singleton owned multiple object pools,
+          keeping every type of poolable object organized &mdash; pool particles
+          being one example.
+        </p>
+
+        <div class="media-slot" data-caption="Screenshot: pool object framework inheritance structure">
+          <span>Code screenshot &mdash; pool object inheritance</span>
+        </div>
+        <p>
+          Projectiles and particle effects shared functionality and both
+          returned to the pool automatically after their lifetime, callable from
+          anywhere via the <code>PoolManager</code>.
+        </p>
+
+        <div class="media-slot" data-caption="Screenshot: practical PoolManager usage example">
+          <span>Code screenshot &mdash; PoolManager in practice</span>
+        </div>
+
+        <p>
+          This made for a strong framework &mdash; abilities could be prototyped
+          and iterated on very quickly, which made balancing far easier.
+        </p>
+
+        <div class="media-slot" data-caption="Inspector view: Fire Breath ability variables">
+          <span>Screenshot &mdash; Fire Breath inspector variables</span>
+        </div>
+        <p>
+          Every variable was exposed in the inspector, letting us rapidly test
+          and balance changes on the fly.
+        </p>
+      </section>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/xQV1nozJqzI" title="Niloc physics-vehicle variant" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <p class="devlog-caption">
+        The ability system turned out flexible enough to switch render pipelines
+        and swap the player for physics-based vehicles, as shown above &mdash;
+        though some physics-heavy abilities like Charge needed extra tuning to
+        behave.
+      </p>
+
+      <section class="devlog-section">
+        <h2>Ability Framework: Evaluation</h2>
+        <p>
+          I'm happy with how the framework turned out overall, though one change
+          would have made it significantly better. Right now, each player
+          instances their own copy of an ability on spawn, so edits to the
+          ability asset don't immediately affect players at runtime. A better
+          approach would look up the shared ability asset directly, separating
+          its logic and enabling real-time balancing &mdash; a simple-sounding
+          refactor that would have reset most of the tuned inspector variables,
+          so it stayed on the "next time" list.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <h2>Tool Development: Complex Collider</h2>
+        <p>
+          I built a tool called <strong>Complex Collider</strong> to make the
+          asset pipeline less tedious for the team, inspired by Unreal Engine's
+          FBX static mesh pipeline, where a mesh can be turned into a
+          primitive/convex collider automatically.
+        </p>
+        <div class="media-slot" data-caption="Before/after: manual colliders vs. Complex Collider tool output">
+          <span>Screenshot &mdash; manual vs. automated collider generation</span>
+        </div>
+        <p>
+          Colliders were originally built by hand &mdash; slow and tedious for
+          the designers. The tool takes a mesh and generates all of its colliders
+          automatically, named identically to Unreal's convention, straight from
+          the mesh's own name.
+        </p>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <p>
+          We'd originally hoped to release on Steam but decided to stay on itch.io
+          for now &mdash; you can play Niloc
+          <a href="https://sollara-games.itch.io/niloc" target="_blank" rel="noopener">here</a>.
+          Source code isn't publicly available due to licensing on the third-party
+          plugins used in the project.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
