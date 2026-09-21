@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riley Clarke | Games Programmer</title>
+  <meta name="description" content="Riley Clarke — Games Programmer specializing in Unity (C#) and Unreal Engine (C++).">
+  <link rel="icon" href="Assets/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#home" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Games Programmer &middot; Liverpool, UK</p>
+        <h1>Riley Clarke</h1>
+        <p class="hero-blurb">
+          I'm an enthusiastic games programmer with industry experience in
+          <strong>Unity (C#)</strong> and <strong>Unreal Engine (C++)</strong>.
+          I like building the systems underneath the game — gameplay frameworks,
+          tools, and the occasional procedurally generated voxel world.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#resume" class="btn btn-secondary">Resume</a>
+          <a href="#contact" class="btn btn-secondary">Contact</a>
+        </div>
+        <ul class="skills">
+          <li>C++</li>
+          <li>C#</li>
+          <li>Unity</li>
+          <li>Unreal Engine</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">First pass — more coming soon.</p>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <div class="project-thumb" data-label="Niloc"></div>
+            <div class="project-body">
+              <div class="project-meta">
+                <h3>Niloc</h3>
+                <span class="project-date">Major Project &middot; 2019</span>
+              </div>
+              <p class="project-role">Programmer / Project Manager &middot; team of 6 (+3 outsourced)</p>
+              <p>
+                A 2&ndash;4 player local multiplayer game blending MOBA-style ability
+                play (think DOTA 2) with fully customizable ability sets — players
+                build their kit from twelve abilities across four sets instead of
+                picking a fixed character.
+              </p>
+              <p>
+                Built a Scriptable-Object-driven ability framework for fast,
+                designer-friendly iteration, a pooled particle/projectile system
+                (<code>PoolManager</code>), and a custom complex-collider tool
+                inspired by Unreal's FBX static mesh pipeline.
+              </p>
+              <ul class="tech-tags">
+                <li>C#</li>
+                <li>Unity 2018.3</li>
+                <li>Odin</li>
+                <li>DOTween</li>
+                <li>Rewired</li>
+                <li>FMOD</li>
+                <li>Cinemachine</li>
+                <li>HDRP</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://sollara-games.itch.io/niloc" target="_blank" rel="noopener">Play on itch.io &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" data-label="WorldCraft"></div>
+            <div class="project-body">
+              <div class="project-meta">
+                <h3>WorldCraft</h3>
+                <span class="project-date">Advanced Games Implementation Project &middot; 2019</span>
+              </div>
+              <p class="project-role">Solo project</p>
+              <p>
+                A Minecraft-inspired technical demo: procedurally generated,
+                voxelized terrain in an infinite world, built from scratch in
+                Unreal Engine 4.
+              </p>
+              <p>
+                Terrain is generated from simplex noise sampled across multiple
+                octaves, stored in a custom chunked voxel data structure, and
+                rendered efficiently using instanced static meshes for
+                repeated elements like grass.
+              </p>
+              <ul class="tech-tags">
+                <li>C++</li>
+                <li>Unreal Engine 4</li>
+                <li>Procedural Generation</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/Flubz/FMAGI" target="_blank" rel="noopener">Source on GitHub &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="resume">
+      <div class="container">
+        <h2 class="section-title">Resume</h2>
+        <p class="section-subtitle">Take a look, or grab a copy.</p>
+        <a class="btn btn-primary" href="https://drive.google.com/file/d/1U87lKnbLI1HGPZhlW8bqOsPFBy60r3q9o57QN3OH-ek/view?usp=sharing" target="_blank" rel="noopener">
+          View Resume (PDF) &rarr;
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Always happy to talk about games, tools, or opportunities.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:RileyClarke1996@gmail.com">RileyClarke1996@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/rileyclarke1996/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://twitter.com/ItsFlubzies" target="_blank" rel="noopener">Twitter / X — @ItsFlubzies</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
