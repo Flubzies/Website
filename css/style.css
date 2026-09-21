@@ -415,8 +415,8 @@ a.project-card:hover .project-thumb::after {
 }
 
 .ability-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   margin-top: 24px;
 }
@@ -430,7 +430,7 @@ a.project-card:hover .project-thumb::after {
 
 .ability-thumb {
   width: 100%;
-  height: 110px;
+  height: auto;
   border-radius: 8px;
   background: var(--bg-alt);
   margin-bottom: 12px;
@@ -534,9 +534,5 @@ a.project-card:hover .project-thumb::after {
 
   .project-thumb {
     min-height: 100px;
-  }
-
-  .ability-grid {
-    grid-template-columns: 1fr;
   }
 }
