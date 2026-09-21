@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Niloc | Riley Clarke</title>
   <meta name="description" content="Niloc, a 2-4 player local multiplayer ability-based game built in Unity. Development breakdown by Riley Clarke.">
-  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="icon" href="../Assets/favicon.png?v=2">
   <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
 <body>
@@ -18,7 +18,7 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="../index.html#home">Home</a></li>
-        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../resume.html">CV</a></li>
         <li><a href="../contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -107,18 +107,43 @@
           needed) and adopted it as the base of our ability system.
         </p>
 
-        <img class="devlog-img" src="../Assets/niloc/code-ability-base-class.png" alt="Code screenshot of the abstract Ability ScriptableObject base class" loading="lazy">
+        <img class="devlog-img" src="../Assets/niloc/code-ability-base-class.png?v=2" alt="Code screenshot of the abstract Ability ScriptableObject base class" loading="lazy">
         <p>
           The class is abstract, forcing every ability to derive from it, with
           properties used to enforce better encapsulation.
         </p>
 
-        <img class="devlog-img" src="../Assets/niloc/diagram-ability-interface.png" alt="Diagram showing player classes, the player-ability interface, and the abstract ability base class" loading="lazy">
-        <p>
-          Player and ability communicate through an interface, holding to the
-          interface segregation principle, which made it far easier to
-          debug and control exactly what data passed between the two.
-        </p>
+        <figure class="devlog-diagram">
+          <svg viewBox="0 0 760 250" role="img" aria-label="Player implements the IPlayerProperty interface. Ability holds a reference to that same interface rather than to Player directly. Twelve concrete ability subclasses inherit from Ability." xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="niloc-ability-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+            </defs>
+
+            <rect x="10" y="30" width="230" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="125" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Player</text>
+            <text x="125" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">implements IPlayerProperty</text>
+
+            <rect x="265" y="30" width="230" height="90" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"></rect>
+            <text x="380" y="68" text-anchor="middle" font-size="12.5" fill="var(--accent)">IPlayerProperty</text>
+            <text x="380" y="92" text-anchor="middle" font-size="10.5" fill="var(--accent)" opacity="0.85">interface</text>
+
+            <rect x="520" y="30" width="230" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="635" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Ability</text>
+            <text x="635" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">references IPlayerProperty</text>
+
+            <line x1="240" y1="75" x2="264" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#niloc-ability-arrow)"></line>
+            <line x1="519" y1="75" x2="496" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#niloc-ability-arrow)"></line>
+
+            <rect x="520" y="160" width="230" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="635" y="190" text-anchor="middle" font-size="12.5" fill="currentColor">12 Concrete Abilities</text>
+            <text x="635" y="212" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">RockBarrage, Heal, Dash + 9 more</text>
+
+            <line x1="635" y1="159" x2="635" y2="121" stroke="currentColor" stroke-width="1.5" marker-end="url(#niloc-ability-arrow)"></line>
+          </svg>
+          <figcaption>Player implements <code>IPlayerProperty</code>; Ability only ever holds a reference to that interface, never to Player directly, holding to the interface segregation principle and making it far easier to debug and control exactly what data passed between the two. The twelve concrete abilities all inherit from <code>Ability</code>.</figcaption>
+        </figure>
       </section>
 
       <section class="devlog-section">
@@ -154,21 +179,45 @@
           it, and correctly resetting state when it's re-enabled.
         </p>
 
-        <img class="devlog-img" src="../Assets/niloc/diagram-poolmanager.png" alt="Diagram of the PoolManager singleton owning multiple object pools" loading="lazy">
-        <p>
-          A <code>PoolManager</code> singleton owned multiple object pools,
-          keeping every type of poolable object organized, pool particles
-          being one example.
-        </p>
+        <figure class="devlog-diagram">
+          <svg viewBox="0 0 760 150" role="img" aria-label="PoolManager owns every ObjectPool asset. Each ObjectPool keeps a stack of pool objects keyed by identifier. GetObjectFromPool hands back an inactive instance from that stack, and ForceReturnToPool pushes it back onto the stack when it's done." xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="niloc-pool-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+            </defs>
 
-        <img class="devlog-img" src="../Assets/niloc/code-pool-object.png" alt="Code screenshot of the pool object inheritance structure (PoolObject, TimedPoolObject, PoolParticle, Projectile)" loading="lazy">
+            <rect x="10" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="95" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">PoolManager</text>
+            <text x="95" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">MonoBehaviour singleton</text>
+
+            <rect x="200" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="285" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">ObjectPool</text>
+            <text x="285" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">one per poolable type</text>
+
+            <rect x="390" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="475" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Stack&lt;PoolObject&gt;</text>
+            <text x="475" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">keyed by identifier</text>
+
+            <rect x="580" y="30" width="170" height="90" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"></rect>
+            <text x="665" y="68" text-anchor="middle" font-size="12.5" fill="var(--accent)">PoolObject</text>
+            <text x="665" y="92" text-anchor="middle" font-size="10.5" fill="var(--accent)" opacity="0.85">returned &amp; activated</text>
+
+            <line x1="180" y1="75" x2="199" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#niloc-pool-arrow)"></line>
+            <line x1="370" y1="75" x2="389" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#niloc-pool-arrow)"></line>
+            <line x1="560" y1="75" x2="579" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#niloc-pool-arrow)"></line>
+          </svg>
+          <figcaption><code>PoolManager</code> owns every <code>ObjectPool</code> asset, and each one keeps its inactive instances in a stack keyed by identifier, so <code>GetObjectFromPool</code> can hand back an existing instance instead of instantiating a new one, and <code>ForceReturnToPool</code> pushes it back onto the stack once it's done.</figcaption>
+        </figure>
+
+        <img class="devlog-img" src="../Assets/niloc/code-pool-object.png?v=2" alt="Code screenshot of the pool object inheritance structure (PoolObject, TimedPoolObject, PoolParticle, Projectile)" loading="lazy">
         <p>
           Projectiles and particle effects shared functionality and both
           returned to the pool automatically after their lifetime, callable from
           anywhere via the <code>PoolManager</code>.
         </p>
 
-        <img class="devlog-img" src="../Assets/niloc/code-poolmanager-usage.png" alt="Code screenshot of an ability requesting an object from the PoolManager" loading="lazy">
+        <img class="devlog-img" src="../Assets/niloc/code-poolmanager-usage.png?v=2" alt="Code screenshot of an ability requesting an object from the PoolManager" loading="lazy">
 
         <p>
           This made for a strong framework: abilities could be prototyped
@@ -244,7 +293,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer</p>
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer<span class="visually-hidden">Hidden text</span></p>
     </div>
   </footer>
 

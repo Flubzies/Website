@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fall Guys | Riley Clarke</title>
   <meta name="description" content="Fall Guys Creative Mode, contract work as a games programmer at Wushu Studios, contracted by Mediatonic, building multiselect and object rotation tooling. Development breakdown by Riley Clarke.">
-  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="icon" href="../Assets/favicon.png?v=2">
   <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
 <body>
@@ -18,7 +18,7 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="../index.html#home">Home</a></li>
-        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../resume.html">CV</a></li>
         <li><a href="../contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -73,7 +73,22 @@
           matter how many objects were selected or where the pivot sat
           within them.
         </p>
+        <p>
+          The team's original discussion was about replacing
+          <code>_selectedObject</code> with a hash set so the selection had
+          no single pivot at all. That would likely have been the cleaner
+          long-term design, but it also meant a core system refactor. I
+          suggested the delta approach instead: it kept the pivot object in
+          place and let it stay abstract from the rest of the selection
+          system, since the only thing being shared between them was a
+          primitive delta value. It got us the same result with far less
+          risk to the existing code.
+        </p>
         <video class="devlog-img" src="../Assets/fallguys/FallGuys_MS_1.mp4" autoplay loop muted playsinline></video>
+        <p class="devlog-caption">
+          Gameplay footage courtesy of the
+          <a href="https://www.youtube.com/watch?v=oD94ZRpPd2Y" target="_blank" rel="noopener">official Fall Guys channel</a>.
+        </p>
       </section>
 
       <section class="devlog-section">
@@ -97,6 +112,10 @@
           pushed toward release.
         </p>
         <video class="devlog-img" src="../Assets/fallguys/FallGuys_Gameplay_2.mp4" autoplay loop muted playsinline></video>
+        <p class="devlog-caption">
+          Gameplay footage courtesy of the
+          <a href="https://www.youtube.com/watch?v=oD94ZRpPd2Y" target="_blank" rel="noopener">official Fall Guys channel</a>.
+        </p>
       </section>
 
       <section class="devlog-section">
@@ -124,7 +143,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer</p>
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer<span class="visually-hidden">Hidden text</span></p>
     </div>
   </footer>
 

@@ -34,6 +34,18 @@ body {
   padding: 0 24px;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -170,22 +182,57 @@ code {
   color: var(--accent);
 }
 
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 0;
+.cinematic-toggle {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 
-.skills li {
-  background: var(--accent-soft);
+.cinematic-toggle:hover {
+  border-color: var(--accent);
   color: var(--accent);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
+}
+
+.cinematic-toggle[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.cinematic-toggle-label {
+  position: relative;
+  z-index: 1;
+}
+
+.cinematic-toggle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(94, 234, 212, 0.45), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: cinematic-glimmer 4s ease-in-out infinite;
+}
+
+@keyframes cinematic-glimmer {
+  0%, 15% {
+    left: -60%;
+  }
+  55%, 100% {
+    left: 130%;
+  }
 }
 
 /* Sections */
@@ -329,6 +376,19 @@ a.project-card:hover .project-thumb::after {
   gap: 8px 24px;
 }
 
+/* Cinematic mode */
+
+body.cinematic-mode .project-grid {
+  grid-template-columns: 1fr;
+  max-width: 920px;
+  margin: 0 auto;
+  gap: 56px;
+}
+
+body.cinematic-mode .project-body > p:not(.project-role) {
+  display: none;
+}
+
 .project-links a {
   font-weight: 600;
 }
@@ -363,6 +423,29 @@ a.project-card:hover .project-thumb::after {
   color: var(--text-muted);
   font-size: 1.1rem;
   max-width: 700px;
+}
+
+.resume-embed {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  max-width: 850px;
+  aspect-ratio: 8.5 / 11;
+}
+
+.resume-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 24px 0 32px;
 }
 
 .devlog-section {

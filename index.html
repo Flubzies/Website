@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riley Clarke | Games Programmer</title>
   <meta name="description" content="Riley Clarke, Games Programmer specializing in Unity (C#) and Unreal Engine (C++).">
-  <link rel="icon" href="Assets/favicon.png">
+  <link rel="icon" href="Assets/favicon.png?v=2">
   <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
@@ -18,7 +18,7 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
-        <li><a href="resume.html">Resume</a></li>
+        <li><a href="resume.html">CV</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -39,21 +39,17 @@
         <p class="hero-blurb">Always happy to receive enquires.</p>
         <div class="hero-actions">
           <a href="#home" class="btn btn-primary">Home</a>
-          <a href="resume.html" class="btn btn-secondary">Resume</a>
+          <a href="resume.html" class="btn btn-secondary">CV</a>
           <a href="contact.html" class="btn btn-secondary">Contact</a>
+          <button type="button" id="cinematicToggle" class="cinematic-toggle" aria-pressed="false">
+            <span class="cinematic-toggle-label">Cinematic Mode</span>
+          </button>
         </div>
-        <ul class="skills">
-          <li>C++</li>
-          <li>C#</li>
-          <li>Unity</li>
-          <li>Unreal Engine</li>
-        </ul>
       </div>
     </section>
 
     <section id="projects" class="projects">
       <div class="container">
-        <h2 class="section-title">Projects</h2>
 
         <div class="project-grid">
 
@@ -550,10 +546,10 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer</p>
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer<span class="visually-hidden">Hidden text</span></p>
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=4"></script>
 </body>
 </html>

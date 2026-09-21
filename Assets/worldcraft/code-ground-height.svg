@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="940" viewBox="0 0 1000 940">
+  <rect width="1000" height="940" fill="#1e1e1e"/>
+  <g font-family="Consolas, 'Cascadia Code', 'SF Mono', monospace" font-size="14" xml:space="preserve">
+    <text x="20" y="30"><tspan fill="#569cd6">void</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#4ec9b0">AChunk</tspan><tspan fill="#d4d4d4">::</tspan><tspan fill="#dcdcaa">GenerateChunk</tspan><tspan fill="#d4d4d4">()</tspan></text>
+    <text x="20" y="50"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="44" y="70"><tspan fill="#9cdcfe">_chunkVoxels</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#dcdcaa">SetNumUninitialized</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#9cdcfe">_chunkTotalSize</tspan><tspan fill="#d4d4d4">);</tspan></text>
+    <text x="44" y="90"><tspan fill="#4ec9b0">TArray</tspan><tspan fill="#d4d4d4">&lt;</tspan><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4">&gt; </tspan><tspan fill="#9cdcfe">noise</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#dcdcaa">CalculateNoise</tspan><tspan fill="#d4d4d4">();</tspan></text>
+    <text x="44" y="110"><tspan fill="#9cdcfe">_randStream</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#4ec9b0">FRandomStream</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_randomSeed</tspan><tspan fill="#d4d4d4">);</tspan></text>
+    <text x="44" y="150"><tspan fill="#4ec9b0">TArray</tspan><tspan fill="#d4d4d4">&lt;</tspan><tspan fill="#4ec9b0">FIntVector</tspan><tspan fill="#d4d4d4">&gt; </tspan><tspan fill="#9cdcfe">treeCenters</tspan><tspan fill="#d4d4d4">;</tspan></text>
+    <text x="44" y="190"><tspan fill="#569cd6">for</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#9cdcfe">x</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#9cdcfe">x</tspan><tspan fill="#d4d4d4"> &lt; </tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_chunkXYSize</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#9cdcfe">x</tspan><tspan fill="#d4d4d4">++)</tspan></text>
+    <text x="44" y="210"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="68" y="230"><tspan fill="#569cd6">for</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#9cdcfe">y</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#9cdcfe">y</tspan><tspan fill="#d4d4d4"> &lt; </tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_chunkXYSize</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#9cdcfe">y</tspan><tspan fill="#d4d4d4">++)</tspan></text>
+    <text x="68" y="250"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="92" y="270"><tspan fill="#569cd6">for</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> &lt; </tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_chunkZSize</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4">++)</tspan></text>
+    <text x="92" y="290"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="116" y="310"><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#9cdcfe">noiseIndex</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#9cdcfe">x</tspan><tspan fill="#d4d4d4"> + (</tspan><tspan fill="#9cdcfe">y</tspan><tspan fill="#d4d4d4"> * </tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_chunkXYSize</tspan><tspan fill="#d4d4d4">);</tspan></text>
+    <text x="116" y="330"><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#9cdcfe">chunkIndex</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#9cdcfe">noiseIndex</tspan><tspan fill="#d4d4d4"> + (</tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> * </tspan><tspan fill="#9cdcfe">_chunkXYSizeP2</tspan><tspan fill="#d4d4d4">);</tspan></text>
+    <text x="116" y="350"><tspan fill="#6a9955">// int32 randChunkDepth = UKismetMathLibrary::RandomIntegerInRange(0, 5);</tspan></text>
+    <text x="116" y="370"><tspan fill="#4ec9b0">int32</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#9cdcfe">indexedChunkHeight</tspan><tspan fill="#d4d4d4"> = </tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_chunkGroundHeight</tspan><tspan fill="#d4d4d4"> + </tspan><tspan fill="#9cdcfe">noise</tspan><tspan fill="#d4d4d4">[</tspan><tspan fill="#9cdcfe">noiseIndex</tspan><tspan fill="#d4d4d4">];</tspan></text>
+    <text x="116" y="410"><tspan fill="#6a9955">// _chunkVoxels stores the voxels as ints.</tspan></text>
+    <text x="116" y="430"><tspan fill="#6a9955">// This should be refactored at some point </tspan><tspan fill="#dcdcaa" font-weight="bold">#todo</tspan></text>
+    <text x="116" y="450"><tspan fill="#6a9955">// Z starts from the bottom of the mesh as 0</tspan></text>
+    <text x="116" y="470"><tspan fill="#6a9955">// If it is equal to indexedChunkHeight then it is "grass/ground"</tspan></text>
+    <text x="116" y="490"><tspan fill="#569cd6">if</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> == (</tspan><tspan fill="#9cdcfe">indexedChunkHeight</tspan><tspan fill="#d4d4d4">))</tspan></text>
+    <text x="116" y="510"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="140" y="530"><tspan fill="#9cdcfe">_chunkVoxels</tspan><tspan fill="#d4d4d4">[</tspan><tspan fill="#9cdcfe">chunkIndex</tspan><tspan fill="#d4d4d4">] = </tspan><tspan fill="#b5cea8">11</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#6a9955">// grass/ground</tspan></text>
+    <text x="116" y="550"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="116" y="570"><tspan fill="#569cd6">else</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#569cd6">if</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> == (</tspan><tspan fill="#9cdcfe">indexedChunkHeight</tspan><tspan fill="#d4d4d4"> - </tspan><tspan fill="#b5cea8">1</tspan><tspan fill="#d4d4d4">) || </tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> == (</tspan><tspan fill="#9cdcfe">indexedChunkHeight</tspan><tspan fill="#d4d4d4"> - </tspan><tspan fill="#b5cea8">2</tspan><tspan fill="#d4d4d4">))</tspan></text>
+    <text x="116" y="590"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="140" y="610"><tspan fill="#9cdcfe">_chunkVoxels</tspan><tspan fill="#d4d4d4">[</tspan><tspan fill="#9cdcfe">chunkIndex</tspan><tspan fill="#d4d4d4">] = </tspan><tspan fill="#b5cea8">12</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#6a9955">// dirt</tspan></text>
+    <text x="116" y="630"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="116" y="650"><tspan fill="#569cd6">else</tspan><tspan fill="#d4d4d4"> </tspan><tspan fill="#569cd6">if</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#9cdcfe">z</tspan><tspan fill="#d4d4d4"> &lt; (</tspan><tspan fill="#9cdcfe">indexedChunkHeight</tspan><tspan fill="#d4d4d4">))</tspan></text>
+    <text x="116" y="670"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="140" y="690"><tspan fill="#9cdcfe">_chunkVoxels</tspan><tspan fill="#d4d4d4">[</tspan><tspan fill="#9cdcfe">chunkIndex</tspan><tspan fill="#d4d4d4">] = </tspan><tspan fill="#b5cea8">13</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#6a9955">// stone</tspan></text>
+    <text x="116" y="710"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="116" y="730"><tspan fill="#6a9955">// If its greater than all the previous values then it is 0 "air".</tspan></text>
+    <text x="116" y="750"><tspan fill="#569cd6">else</tspan></text>
+    <text x="116" y="770"><tspan fill="#d4d4d4">{</tspan></text>
+    <text x="140" y="790"><tspan fill="#9cdcfe">_chunkVoxels</tspan><tspan fill="#d4d4d4">[</tspan><tspan fill="#9cdcfe">chunkIndex</tspan><tspan fill="#d4d4d4">] = </tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#d4d4d4">; </tspan><tspan fill="#6a9955">// empty</tspan></text>
+    <text x="116" y="810"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="92" y="830"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="68" y="850"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="44" y="870"><tspan fill="#d4d4d4">}</tspan></text>
+    <text x="44" y="890"><tspan fill="#569cd6">if</tspan><tspan fill="#d4d4d4"> (</tspan><tspan fill="#9cdcfe">_csp</tspan><tspan fill="#d4d4d4">.</tspan><tspan fill="#9cdcfe">_generateTrees</tspan><tspan fill="#d4d4d4">) </tspan><tspan fill="#dcdcaa">GenerateTrees</tspan><tspan fill="#d4d4d4">(</tspan><tspan fill="#9cdcfe">treeCenters</tspan><tspan fill="#d4d4d4">, </tspan><tspan fill="#9cdcfe">noise</tspan><tspan fill="#d4d4d4">);</tspan></text>
+    <text x="20" y="910"><tspan fill="#d4d4d4">}</tspan></text>
+  </g>
+</svg>
