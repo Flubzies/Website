@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallant | Riley Clarke</title>
+  <meta name="description" content="Gallant — a 4-player local multiplayer space shooter built solo in 30 hours, where using abilities raises your APM and speeds up your ship. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">University Game Jam &middot; 2018</span>
+        <h1>Gallant</h1>
+        <p class="devlog-intro">
+          Gallant is a 2&ndash;4 player local multiplayer space shooter built
+          solo in 30 hours for the University of Bolton's game jam on the
+          theme "Fast and Slow." A level designer at TT Games judged it the
+          best individually developed game in the jam.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity3D</li>
+          <li>Blender</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Flubz/Gallant/raw/master/Builds/Gallant-V1.0.zip" target="_blank" rel="noopener">Download the build &rarr;</a>
+          <a href="https://github.com/Flubz/Gallant" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/gallant/gameplay-01.mp4" autoplay loop muted playsinline></video>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/BxIOTjkMji4" title="Gallant development time-lapse" loading="lazy" allowfullscreen></iframe>
+      </div>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          Going into the jam I had two things I specifically wanted to
+          practice: multiplayer game development and 3D modelling in
+          Blender, both fairly new to me at the time. Thirty hours later,
+          Gallant shipped with 2&ndash;4 player local multiplayer, four
+          unique abilities, three distinct ships with their own custom
+          models and stats, an original soundtrack, and a UI I was actually
+          happy to call polished for a jam entry.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Tying Abilities to the Theme</h2>
+        <p>
+          "Fast and Slow" became APM &mdash; actions per minute &mdash; as the
+          mechanic tying everything together. Every time a player uses an
+          ability, their APM rises, and the higher their APM climbs, the
+          faster their ship moves. It rewards players who keep acting rather
+          than sitting back, and it turns raw actions-per-minute, normally
+          just a stat you'd track, into something that directly changes how
+          the ship handles mid-fight.
+        </p>
+        <video class="devlog-img" src="../Assets/gallant/gameplay-02.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Jam Reflection</h2>
+        <p>
+          By this point I'd built up real confidence estimating what I could
+          get done in Unity and C# within a jam's timeframe, and the
+          soundtrack in particular came together better than in earlier
+          projects. My main regret is build-specific bugs that never showed
+          up during development and only surfaced in the exported build
+          &mdash; a reminder to leave more time at the end of future jams
+          for testing the actual build, not just the editor.
+        </p>
+        <video class="devlog-img" src="../Assets/gallant/gameplay-03.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          A Windows build and the full source are both up on
+          <a href="https://github.com/Flubz/Gallant" target="_blank" rel="noopener">GitHub</a>
+          &mdash; grab the
+          <a href="https://github.com/Flubz/Gallant/raw/master/Builds/Gallant-V1.0.zip" target="_blank" rel="noopener">build directly</a>
+          if you want to round up some friends and try it.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

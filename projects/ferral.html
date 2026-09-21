@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferral | Riley Clarke</title>
+  <meta name="description" content="Ferral — a Werewolf-inspired social deduction game built solo in 24 hours for a university game jam. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">University Game Jam &middot; 2018</span>
+        <h1>Ferral</h1>
+        <p class="devlog-intro">
+          Ferral is a digital take on the social deduction board game Werewolf,
+          built solo in 24 hours for the University of Bolton's game jam on the
+          theme "Folklore." It placed as the best individually developed game
+          in the jam.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity3D</li>
+          <li>Blender</li>
+          <li>Photoshop</li>
+          <li>Mixamo</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Flubz/Ferral/raw/master/Builds/Windows/Ferral-v1.1.zip" target="_blank" rel="noopener">Download the build &rarr;</a>
+          <a href="https://github.com/Flubz/Ferral" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/ferral/gameplay-01.mp4" autoplay loop muted playsinline></video>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/Ka0pHmvlYIA" title="Ferral gameplay" loading="lazy" allowfullscreen></iframe>
+      </div>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          I took "Folklore" straight to the board game Werewolf and adapted
+          its hidden-role social deduction loop into something playable in a
+          single local multiplayer session. A village of AI villagers shares
+          the map with four anonymous human players: three hunters carrying
+          three bullets each, and one werewolf hidden among them. The werewolf
+          wins by picking off the hunters; the hunters win by working out who
+          the werewolf is before they run out of bullets or villagers.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Building on What I Had</h2>
+        <p>
+          Local multiplayer boilerplate I was already running on other
+          projects at the time saved me from rebuilding input and player
+          management from scratch, which meant almost the entire 24 hours
+          went into the actual design problem: turning a board game built
+          around a moderator and open conversation into something that works
+          without either. That was the hardest part of the jam &mdash; there's
+          no round moderator in a video game, so the tension and secrecy the
+          original board game gets from a group sitting around a table had to
+          come from somewhere else, mostly the anonymity of who's actually a
+          hunter and who's the wolf.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>New Tools for the Jam</h2>
+        <p>
+          I used Unity's terrain system and Mixamo animations for the first
+          time on this project, both in service of getting a village worth
+          hiding a werewolf in built quickly. Audio was deliberately left out
+          &mdash; with only 24 hours, I decided gameplay was worth more of my
+          time than a soundtrack I wouldn't have had time to do justice.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Jam Reflection</h2>
+        <p>
+          Ferral is the most design-heavy project I'd built up to that point,
+          which was deliberate &mdash; design was a gap in my portfolio I
+          wanted to close. It came out well enough to take the jam's top
+          individual spot, and it left me wanting to push further outside my
+          usual Unity/C# comfort zone, which is part of what pointed me
+          toward picking up Unreal Engine and C++ afterward.
+        </p>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          A Windows build and the full source are both up on
+          <a href="https://github.com/Flubz/Ferral" target="_blank" rel="noopener">GitHub</a>
+          &mdash; grab the
+          <a href="https://github.com/Flubz/Ferral/raw/master/Builds/Windows/Ferral-v1.1.zip" target="_blank" rel="noopener">build directly</a>
+          if you want to round up three friends and try it.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

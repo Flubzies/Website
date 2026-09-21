@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina | Riley Clarke</title>
+  <meta name="description" content="Lumina — a 48-hour jam game about escaping catacombs on a depleting light life force, built for the 3rd Alakajam. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Alakajam #3 &middot; 2018</span>
+        <h1>Lumina</h1>
+        <p class="devlog-intro">
+          Lumina is a 48-hour jam game about escaping a catacomb with an aura
+          of light as your only life force &mdash; built for the 3rd Alakajam
+          on the theme "Always Growing," and the team's first project
+          combining Unity with git.
+        </p>
+        <ul class="tech-tags">
+          <li>Unity</li>
+          <li>Maya</li>
+          <li>Blender</li>
+          <li>Substance Painter</li>
+          <li>Photoshop</li>
+          <li>Bosca Ceoil</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://flubz.itch.io/lumina" target="_blank" rel="noopener">Play on itch.io &rarr;</a>
+          <a href="https://github.com/Flubz/Lumina" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/lumina/gameplay-01.mp4" autoplay loop muted playsinline></video>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Team</h2>
+        <div class="team-columns">
+          <div>
+            <ul class="team-list">
+              <li><strong>Scott Ledingham</strong> &mdash; Designer</li>
+              <li><strong>Stephen Ogbeiwi</strong> &mdash; Designer</li>
+              <li><strong>Tom Broughton</strong> &mdash; Artist</li>
+              <li><strong>Riley Clarke</strong> &mdash; Programmer / 3D Modeling / Project Management</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          Alongside programming and some of the 3D modelling, I managed the
+          project across the 48 hours and taught the rest of the team the
+          git basics they needed to work alongside me, since this was the
+          team's first time combining Unity with proper version control.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Light as Life Force</h2>
+        <p>
+          The player controls Lumina, trying to find the exit out of a set of
+          catacombs while an aura of light around them constantly depletes.
+          Light crystals scattered through the levels top the aura back up,
+          but the core tension comes from the enemies: they're invisible in
+          darkness and drain light fast on contact, so retreating into the
+          dark to avoid them costs you the resource you need to survive it.
+          Players can trigger a light pulse to reveal more of the map, at the
+          cost of burning through the aura even faster &mdash; there's no way
+          to see everything and stay safe at the same time.
+        </p>
+        <video class="devlog-img" src="../Assets/lumina/gameplay-02.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Designing Around Retreat</h2>
+        <p>
+          We leaned into atmosphere over combat &mdash; there's no way to
+          fight back against an enemy that catches you, so the only real
+          strategy is avoidance and retreat. That constraint shaped the whole
+          level design: darkness needed to feel genuinely threatening rather
+          than just an aesthetic choice, since it's the thing directly
+          working against the resource keeping the player alive.
+        </p>
+        <video class="devlog-img" src="../Assets/lumina/gameplay-03.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Jam Reflection</h2>
+        <p>
+          We ran into the usual first-time git problems &mdash; merge
+          conflicts and Unity meta file headaches &mdash; but got through
+          them, which was really the point: this jam doubled as practice for
+          collaborating on our final year university project the same way.
+          Reception was slightly good to mediocre; players felt the theme
+          wasn't fully nailed and some found the trial-and-error pacing
+          frustrating, but the run itself did what we needed it to do for the
+          team's git and Unity workflow going forward.
+        </p>
+        <video class="devlog-img" src="../Assets/lumina/gameplay-04.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          Lumina is playable on
+          <a href="https://flubz.itch.io/lumina" target="_blank" rel="noopener">itch.io</a>,
+          with the full source and the
+          <a href="https://alakajam.com/3rd-alakajam/339/lumina/" target="_blank" rel="noopener">Alakajam entry</a>
+          both up for anyone who wants to dig further.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

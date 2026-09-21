@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robrawl | Riley Clarke</title>
+  <meta name="description" content="Robrawl — a 2-4 player local multiplayer robot brawler built in Unity by Team Sollara for Brains Eden 2019. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Brains Eden &middot; 2019</span>
+        <h1>Robrawl</h1>
+        <p class="devlog-intro">
+          Robrawl is a 2&ndash;4 player local multiplayer robot brawler built by
+          Team Sollara for Brains Eden 2019, a UK student game development
+          festival. Robots duke it out in an arena with punches, knockback, and
+          pickable "pinballs" they can launch at each other &mdash; last robot
+          standing wins.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity 2019.1 (LWRP)</li>
+          <li>Rewired</li>
+          <li>Odin</li>
+          <li>DOTween</li>
+          <li>TextMesh Pro</li>
+        </ul>
+      </header>
+
+      <img class="devlog-hero-img" src="../Assets/robrawl/hero-title-card.webp" alt="The Robrawl title card animating in over the dojo arena, its spiked boundary fence and pinballs scattered across the floor" loading="lazy">
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Team Sollara</h2>
+        <ul class="team-list">
+          <li><strong>Riley Clarke</strong> &mdash; Programmer / Project Manager</li>
+          <li><strong>Franchesca</strong> &mdash; Artist</li>
+          <li><strong>Alex</strong> &mdash; Sound</li>
+          <li><strong>Steve</strong> &mdash; Design</li>
+          <li><strong>Scott</strong> &mdash; Design</li>
+        </ul>
+        <p>
+          I led as project manager and programmer, working in C# alongside
+          Odin, DOTween, TextMesh Pro, and Rewired to drive local multiplayer
+          input across up to four controllers. The game runs on Unity 2019.1's
+          Lightweight Render Pipeline.
+        </p>
+        <img class="devlog-img" src="../Assets/robrawl/team-brains-eden.jpg" alt="Team Sollara sitting together wearing Brains Eden 2019 t-shirts" loading="lazy">
+        <p class="devlog-caption">Team Sollara at Brains Eden 2019.</p>
+        <img class="devlog-img" src="../Assets/robrawl/team-sollara-bois.jpg" alt="Team Sollara posing together with drinks, captioned 'Sollara Bois!'" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          Robrawl drops two to four players into a top-down arena as robots,
+          fighting to be the last one standing. There's no fixed loadout or
+          ranged weapon to start &mdash; every robot can punch for knockback,
+          dodge/dash out of trouble on a cooldown, and pick up one of the
+          "pinballs" bouncing around the arena to fling at an opponent for
+          ranged damage. Multiple arenas shipped with distinct themes, from a
+          spike-fenced dojo to a neon, low-poly city street lined with traffic
+          cones and parked cars.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Pinball System</h2>
+        <p>
+          A <code>BallSpawner</code> drops pinballs into the arena on a timer,
+          doubling how many spawn each wave (up to a cap) so a match starts
+          sparse and escalates into chaos. Balls are only safe to grab below a
+          speed threshold &mdash; a <code>PinBall</code> shifts from white to
+          red as it crosses that threshold, telegraphing whether it's currently
+          pickable or still dangerous to touch. Once a player grabs a slow
+          ball, they can fire it from their <code>Player</code>'s launch point
+          at high speed toward an opponent.
+        </p>
+        <img class="devlog-img" src="../Assets/robrawl/gameplay-01.webp" alt="Robrawl gameplay — two robots circling each other in the dojo arena among scattered pinballs and crate obstacles" loading="lazy">
+        <p class="devlog-caption">The dojo arena &mdash; robots circling for an opening while pinballs and crates litter the floor.</p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Knockback, Health &amp; Ring-Outs</h2>
+        <p>
+          Damage is handled through a small, reusable <code>Health</code>
+          component and a static <code>HealthDamager</code> helper that any
+          system can call into &mdash; a punch, a thrown pinball, or the
+          spiked <code>Fence</code> bounding each arena all route through the
+          same <code>AttemptToDamage</code> / <code>AttemptToKnockback</code>
+          calls. Taking a hit grants a short invulnerability window before a
+          robot can be damaged again, stopping one lucky combo from chaining
+          into a stunlock.
+        </p>
+        <p>
+          Rather than a shrinking ring, ring-outs are handled by a simple
+          distance check: <code>PlayerManager</code> runs a respawn/ring-out
+          coroutine that removes any robot knocked far enough from the arena
+          centre, so a big enough hit &mdash; a punch or a well-aimed pinball
+          &mdash; can end a robot's run outright instead of just chipping its
+          health.
+        </p>
+        <img class="devlog-img" src="../Assets/robrawl/gameplay-02.webp" alt="Robrawl gameplay — two robots fighting in the neon city-street arena among traffic cones, a parked van, and pinballs" loading="lazy">
+        <p class="devlog-caption">The city-street arena &mdash; same combat loop, completely different dressing.</p>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          Robrawl shipped as Team Sollara's entry to Brains Eden 2019. The
+          source lives in a private university-team repository rather than a
+          public one, so there's no code link here &mdash; but the pinball
+          push-your-luck loop and the reusable pooling/health framework behind
+          it carried straight into later Sollara Games projects.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

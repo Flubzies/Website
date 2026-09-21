@@ -209,7 +209,7 @@ section {
 
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 }
 
@@ -218,8 +218,8 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 220px 1fr;
+  display: flex;
+  flex-direction: column;
   color: inherit;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
@@ -250,8 +250,18 @@ a.project-card:hover .project-thumb::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
   position: relative;
+  overflow: hidden;
+}
+
+.project-thumb img,
+.project-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .project-thumb::after {
@@ -311,6 +321,12 @@ a.project-card:hover .project-thumb::after {
   font-size: 0.78rem;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
 .project-links a {
   font-weight: 600;
 }
@@ -348,14 +364,20 @@ a.project-card:hover .project-thumb::after {
 }
 
 .devlog-section {
-  margin: 56px 0;
+  margin-top: 40px;
+  padding: 0;
+  border-top: none;
+}
+
+.devlog-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 20px;
 }
 
 .devlog-section h2 {
   font-size: 1.6rem;
   margin: 0 0 18px;
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
 }
 
 .devlog-section h3 {
@@ -374,11 +396,6 @@ a.project-card:hover .project-thumb::after {
   font-size: 0.95rem;
   max-width: 700px;
   margin: 16px 0 0;
-}
-
-.devlog-closing {
-  border-top: 1px solid var(--border);
-  padding-top: 32px;
 }
 
 .team-columns {
@@ -454,6 +471,27 @@ a.project-card:hover .project-thumb::after {
   margin: 20px auto;
 }
 
+.devlog-diagram {
+  margin: 20px auto;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.devlog-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.devlog-diagram figcaption {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
 .ability-card h4 {
   margin: 0 0 6px;
   font-size: 1rem;
@@ -475,12 +513,14 @@ a.project-card:hover .project-thumb::after {
   margin: 32px 0;
 }
 
-.video-embed iframe {
+.video-embed iframe,
+.video-embed video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  object-fit: cover;
 }
 
 /* Contact */
@@ -488,11 +528,62 @@ a.project-card:hover .project-thumb::after {
 .contact-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 32px 0 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-size: 1.1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+  margin: 32px 0 0;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.form-field input,
+.form-field textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.contact-form button {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-note {
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 
 /* Footer */
@@ -528,7 +619,7 @@ a.project-card:hover .project-thumb::after {
     display: flex;
   }
 
-  .project-card {
+  .project-grid {
     grid-template-columns: 1fr;
   }
 

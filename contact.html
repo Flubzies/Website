@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Riley Clarke</title>
+  <meta name="description" content="Get in touch with Riley Clarke — Games Programmer.">
+  <link rel="icon" href="Assets/favicon.png">
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="index.html#home">&larr; Back to home</a>
+
+      <header class="devlog-header">
+        <h1>Leave a comment</h1>
+        <p class="devlog-intro">Always happy to talk about games, tools, or opportunities &mdash; drop a message below and I'll get back to you.</p>
+      </header>
+
+      <!-- TODO: replace with your real Formspree endpoint (sign up at formspree.io, create a form, swap in its /f/xxxxxxx URL) -->
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="_replyto" required>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </form>
+
+      <ul class="contact-list">
+        <li><a href="https://www.linkedin.com/in/rileyclarke1996/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://twitter.com/ItsFlubzies" target="_blank" rel="noopener">Twitter / X — @ItsFlubzies</a></li>
+      </ul>
+
+      <a class="back-link" href="index.html#home">&larr; Back to home</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

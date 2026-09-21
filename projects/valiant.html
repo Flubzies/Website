@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valiant | Riley Clarke</title>
+  <meta name="description" content="Valiant — an Android score-attack dodging game built solo in 30 hours for a charity game jam, controlled entirely by accelerometer. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Charity Game Jam &middot; 2017</span>
+        <h1>Valiant</h1>
+        <p class="devlog-intro">
+          Valiant is a score-attack dodging game for Android, built solo in
+          30 hours for the University of Bolton's charity game jam on the
+          theme "Fall," controlled entirely by tilting the phone.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity3D</li>
+          <li>Photoshop</li>
+          <li>Bosca Ceoil</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Flubz/Valiant/raw/master/Builds/Valiant.apk" target="_blank" rel="noopener">Download the APK &rarr;</a>
+          <a href="https://github.com/Flubz/Valiant" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/valiant/gameplay-01.mp4" autoplay loop muted playsinline></video>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          My goal going in was a complete, finished, polished, and
+          bug-free submission, and I got there &mdash; though a few art
+          assets came from an earlier C++ SDL university project, reworked
+          rather than built from scratch, to buy back time for the systems
+          that actually needed it. Valiant is a straightforward score-attack
+          dodger at its core, but the difficulty ramps progressively, and the
+          movement scheme leans entirely on the phone's accelerometer, with
+          calibration built in to tune the dead zone to how you're holding
+          the device.
+        </p>
+        <video class="devlog-img" src="../Assets/valiant/gameplay-02.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>A Special Ability Built From the Theme</h2>
+        <p>
+          "Fall" turned into a special ability rather than a level gimmick:
+          triggering it sends the ship travelling backward through time,
+          temporarily granting invulnerability at the cost of giving up
+          direct control while it plays out. Difficulty scales through
+          randomized map arrangements per difficulty tier, so runs stay
+          varied instead of repeating the same obstacle pattern once you've
+          learned it.
+        </p>
+        <video class="devlog-img" src="../Assets/valiant/gameplay-03.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Jam Reflection</h2>
+        <p>
+          I also adapted the game to work with an external controller for
+          demoing, which came in handy for showing it off without handing
+          someone an unfamiliar phone. Looking back, I'd overestimated how
+          much original art I'd have time for and leaned harder on reused
+          assets than I'd planned, prioritizing the soundtrack, menus, and
+          general polish instead &mdash; a trade-off that paid off in how
+          finished the submission felt, and one that sharpened how I
+          estimated scope on the jams that followed.
+        </p>
+        <video class="devlog-img" src="../Assets/valiant/gameplay-04.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          The Android APK and full source are both up on
+          <a href="https://github.com/Flubz/Valiant" target="_blank" rel="noopener">GitHub</a>
+          &mdash; grab the
+          <a href="https://github.com/Flubz/Valiant/raw/master/Builds/Valiant.apk" target="_blank" rel="noopener">APK directly</a>
+          if you want to try it on your phone.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorldCraft | Riley Clarke</title>
+  <meta name="description" content="WorldCraft — a Minecraft-inspired procedural voxel terrain demo built from scratch in Unreal Engine 4 with C++. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Advanced Games Implementation Project &middot; 2019</span>
+        <h1>WorldCraft</h1>
+        <p class="devlog-intro">
+          WorldCraft was my final-year university module project: a
+          Minecraft-inspired technical demo built solo, from scratch, in
+          Unreal Engine 4 and C++. Terrain is procedurally generated and
+          voxelized, split into chunks, and streamed out into an
+          effectively infinite world driven by simplex noise.
+        </p>
+        <ul class="tech-tags">
+          <li>C++</li>
+          <li>Unreal Engine 4</li>
+          <li>Procedural Generation</li>
+          <li>Simplex Noise</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Flubz/FMAGI" target="_blank" rel="noopener">View source on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/worldcraft/hero-title-card.mp4" autoplay loop muted playsinline></video>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          The brief for the module was open-ended, so I chose to chase
+          something I found genuinely interesting: procedural generation of
+          voxelized meshes that spawn in chunks to form an infinite world,
+          sampled from simplex noise. I built on top of Sebastian Lague's
+          tutorial series on the subject and DevDad's Simplex Noise plugin
+          for the underlying noise function, then extended both
+          considerably &mdash; reworking the code to be more extensible,
+          more easily configurable from the editor, and more efficient at
+          runtime.
+        </p>
+        <video class="devlog-img" src="../Assets/worldcraft/gameplay-mining.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Chunked Voxel Terrain</h2>
+        <p>
+          The world is divided into <code>AChunk</code> actors, each owning
+          a flat <code>TArray&lt;int32&gt;</code> of voxel IDs sized by a
+          shared <code>FChunkSpawn</code> config struct &mdash; XY size,
+          Z (height) size, a base ground height, and the world-space size
+          of an individual voxel. A 3D position within the chunk flattens
+          to a single array index with
+          <code>x + (y * chunkXYSize) + (z * chunkXYSizeP2)</code>.
+        </p>
+        <img class="devlog-img" src="../Assets/worldcraft/diagram-voxel-structure.png" alt="Diagram of a chunk's voxel grid, labelled with chunkXYSize, chunkZSize, and chunkGroundHeight" loading="lazy">
+        <p>
+          Each column's voxel type falls out of a single height comparison
+          against the ground height plus that column's noise value: the
+          exact height is grass, the next two layers down are dirt,
+          everything below that is stone, and everything above is air.
+        </p>
+        <img class="devlog-img" src="../Assets/worldcraft/code-ground-height.png" alt="Code screenshot assigning grass, dirt, stone, or air to each voxel based on height relative to the noise-driven ground height" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Multi-Octave Simplex Noise</h2>
+        <p>
+          Ground height per column comes from an <code>FOctaves</code> array
+          exposed to the editor &mdash; each octave has its own X/Y sampling
+          multiplier, weight, and an optional clamp range, so a designer can
+          layer a broad, low-frequency octave for rolling hills with sharper
+          high-frequency octaves for detail, entirely from the inspector
+          without touching code.
+        </p>
+        <img class="devlog-img" src="../Assets/worldcraft/diagram-noise-array.png" alt="Code screenshot of CalculateNoise summing weighted, optionally-clamped simplex noise octaves into a per-column height array" loading="lazy">
+        <p>
+          Every enabled octave is sampled with <code>SimplexNoise2D</code>
+          at a chunk-offset coordinate (so neighbouring chunks line up
+          seamlessly), scaled by its weight, optionally clamped, and summed;
+          the cumulative value is floored to an integer and stored per
+          column for the whole chunk to reuse.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Procedural Mesh &amp; Face Culling</h2>
+        <p>
+          Chunk meshes are built with <code>ProceduralMeshComponent</code>,
+          one mesh section per material/voxel type so each renders with the
+          right texture. Rather than emitting a full cube per solid voxel,
+          <code>UpdateMesh()</code> checks each of a voxel's six neighbours
+          and only emits the quad for a face whose neighbour is air (or off
+          the edge of the chunk) &mdash; a simple hidden-face culling pass
+          that keeps triangle counts down on a world made of tens of
+          thousands of voxels per chunk.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Trees &amp; Instanced Grass</h2>
+        <p>
+          Vegetation is placed with a per-chunk seeded <code>FRandomStream</code>
+          so a given chunk always regenerates identically. Walking every
+          surface column, each has an independent chance to spawn a tuft of
+          grass and a much smaller chance to become a tree centre; tree
+          canopies are then built as a randomized sphere-ish cluster of leaf
+          voxels around a randomized trunk height, with a bit of noise
+          thrown into which candidate leaf positions actually fill in so
+          canopies don't come out perfectly spherical.
+        </p>
+        <p>
+          Grass doesn't get baked into the chunk mesh at all &mdash; it's
+          flagged as its own voxel ID and routed through a Blueprint-native
+          <code>AddInstanceVoxel</code> event, which drops an Instanced
+          Static Mesh instance at that position instead. Thousands of grass
+          blades share a single draw call and transform buffer rather than
+          each costing their own mesh section.
+        </p>
+        <img class="devlog-img" src="../Assets/worldcraft/diagram-instanced-mesh.png" alt="Dense instanced grass rendered across the voxel terrain" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Evaluation</h2>
+        <p>
+          WorldCraft did what it needed to as a module project: a working,
+          infinite, chunked voxel world with configurable noise-driven
+          terrain, vegetation, and a mesh pipeline efficient enough to
+          stream new chunks without stuttering. It's openly built on
+          Sebastian Lague's tutorial series and DevDad's noise plugin, and
+          I'd credit both rather than pretend otherwise &mdash; the value I
+          added was in making the system more extensible and configurable,
+          and in the face-culling and instancing work to keep it
+          performant.
+        </p>
+        <p>
+          The biggest thing I'd revisit is exactly what the source still
+          flags with a <code>#todo</code>: voxels are stored as raw
+          <code>int32</code> IDs with meaning encoded by magic numbers
+          (11 for grass, 12 for dirt, 13 for stone, and so on). It works,
+          but a proper voxel/material data asset would make the system far
+          easier to extend with new block types without hunting down every
+          place an ID is compared.
+        </p>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          The full source is up on
+          <a href="https://github.com/Flubz/FMAGI" target="_blank" rel="noopener">GitHub</a>
+          for anyone who wants to see how the chunking, noise, and meshing
+          fit together.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

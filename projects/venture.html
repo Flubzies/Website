@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venture | Riley Clarke</title>
+  <meta name="description" content="Venture — a procedurally generated roguelike shooter for Android, built solo in Unity for a university games hardware &amp; architecture module. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">University Module Project &middot; 2018</span>
+        <h1>Venture</h1>
+        <p class="devlog-intro">
+          Venture is a procedurally generated roguelike shooter for Android,
+          built solo in Unity for my Games Hardware &amp; Architecture
+          university module. The brief required an Android game controlled
+          with the accelerometer or gyroscope; I built the whole thing in
+          the final month before hand-in as a showcase of programming
+          skills rather than a polished commercial game.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity3D</li>
+          <li>Procedural Generation</li>
+          <li>Object Pooling</li>
+          <li>Photoshop</li>
+          <li>BFXR</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/Flubz/Venture/raw/master/Builds/Venture.apk" target="_blank" rel="noopener">Download the APK &rarr;</a>
+          <a href="https://github.com/Flubz/Venture" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <img class="devlog-hero-img" src="../Assets/venture/gameplay-01.gif" alt="Venture gameplay — navigating a procedurally generated level and fighting enemies on Android" loading="lazy">
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          The module was an introduction to Unity with one hard constraint:
+          the game had to run on Android and be controlled with the
+          accelerometer or gyroscope. I'd already picked up experience with
+          both from an earlier project, Valiant, so a lot of that input code
+          carried straight over, which freed up time to spend on systems I
+          found more interesting &mdash; procedural level generation, an
+          object pooling framework, and a loot system with weapon rarity.
+        </p>
+        <img class="devlog-img" src="../Assets/venture/gameplay-02.gif" alt="Venture gameplay — tilting the device to move through a generated level" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Procedural Level Generation</h2>
+        <p>
+          Levels are generated with cellular automata to rough out open and
+          solid space, then marching squares to turn that grid into smooth
+          walkable terrain outlines rather than blocky cells &mdash; an
+          approach I learned from Sebastian Lague's tutorial series and
+          built out for this project. I wanted to push it further with
+          chunked terrain and Perlin noise for a fully continuous generated
+          world, following the same tutorial series' terrain generation
+          episodes, but ran into bugs I didn't have time to chase down
+          before the deadline, so that layer was cut from the final build.
+        </p>
+        <img class="devlog-img" src="../Assets/venture/gameplay-03.gif" alt="Venture — a procedurally generated level laid out from cellular automata and marching squares" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Object Pooling &amp; Weapon Rarity</h2>
+        <p>
+          Enemies and projectiles run through an object pooling system
+          (also following Sebastian Lague's approach) to keep instantiation
+          cost off the frame budget on Android hardware. Weapons carry
+          varied stats and a rarity tier that the level generator weighs
+          when deciding what to spawn and where, pushing the run-to-run
+          variety that makes the game feel like a roguelike rather than a
+          fixed shooting gallery.
+        </p>
+        <img class="devlog-img" src="../Assets/venture/gameplay-04.gif" alt="Venture gameplay — picking up a weapon and fighting through a generated level" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Project Analysis</h2>
+        <p>
+          My project planning was absolutely abysmal &mdash; this game is a
+          product of what I could accomplish in the last month before
+          hand-in, after scrapping a few earlier prototypes I couldn't turn
+          into a decent game idea. Even so, I'm happy with how it came
+          together in that time; the result just made it obvious how much
+          I needed to take planning more seriously going forward.
+        </p>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          The Android APK and full source are both up on
+          <a href="https://github.com/Flubz/Venture" target="_blank" rel="noopener">GitHub</a>
+          &mdash; grab the
+          <a href="https://github.com/Flubz/Venture/raw/master/Builds/Venture.apk" target="_blank" rel="noopener">APK directly</a>
+          if you just want to try it.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

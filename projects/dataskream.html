@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataSkream | Riley Clarke</title>
+  <meta name="description" content="DataSkream — a rhythm platformer built in 48 hours for Ludum Dare 42, where the beat strips platforms out from under you. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Ludum Dare 42 &middot; 2018</span>
+        <h1>DataSkream</h1>
+        <p class="devlog-intro">
+          DataSkream is a rhythm platformer built in 48 hours for Ludum Dare 42
+          on the theme "Running out of space" &mdash; the more intense the
+          track gets, the fewer platforms there are to land on, so staying
+          alive means staying on the beat.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity</li>
+          <li>Odin</li>
+          <li>DOTween</li>
+          <li>Amplify Shader Editor</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://sollara-games.itch.io/dataskream" target="_blank" rel="noopener">Play on itch.io &rarr;</a>
+          <a href="https://github.com/Flubz/LD42" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/dataskream/gameplay-01.mp4" autoplay loop muted playsinline></video>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/G46xVZS7UXI" title="DataSkream gameplay" loading="lazy" allowfullscreen></iframe>
+      </div>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Team</h2>
+        <div class="team-columns">
+          <div>
+            <ul class="team-list">
+              <li><strong>Scott Ledingham</strong> &mdash; Designer</li>
+              <li><strong>Tom Broughton</strong> &mdash; Artist</li>
+              <li><strong>Lewis Kellet</strong> &mdash; Sound Engineer</li>
+              <li><strong>Riley Clarke</strong> &mdash; Programmer</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          I handled all the programming, built in Unity with Odin, DOTween,
+          and Amplify Shader Editor, while the rest of the team covered art
+          (Blender, Maya, ZBrush, Photoshop) and the soundtrack (Ableton
+          Live) that the whole game is built around.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Platforms Tied to the Track</h2>
+        <p>
+          "Running out of space" became a platforming system where the number
+          of platforms on screen is driven directly by how "hyped" the
+          current section of the song is &mdash; the more intense the music
+          gets, the fewer platforms you have to jump to, and the harder the
+          run becomes as the track builds. It's a simple rule, but it ties
+          the difficulty curve directly to the music instead of bolting a
+          rhythm layer onto a platformer that would work fine without it.
+        </p>
+        <video class="devlog-img" src="../Assets/dataskream/gameplay-02.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Building It in 48 Hours</h2>
+        <p>
+          With a team of four and a hard weekend deadline, we split cleanly
+          along our strengths: I owned the platforming, the platform-spawn
+          logic reading the track's intensity, and get the whole thing
+          running end to end, while the team's designer, artist, and sound
+          engineer worked in parallel on level layout, visuals, and the music
+          that everything else keys off. GitKraken and Visual Studio Code
+          kept the programming side manageable under jam time pressure.
+        </p>
+        <video class="devlog-img" src="../Assets/dataskream/gameplay-03.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Jam Reflection</h2>
+        <p>
+          DataSkream placed 29th in the Audio category, which the team was
+          happy with given the format. Our biggest miss afterward was
+          marketing &mdash; a game like this relies a lot on the community
+          actually finding and playing it, and we didn't push that side hard
+          enough post-jam. Looking back, it's simple, but addictive, and
+          there's a version of this that could genuinely work as a mobile
+          game with a bit more polish.
+        </p>
+        <video class="devlog-img" src="../Assets/dataskream/gameplay-04.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          DataSkream is playable in-browser and the source is up on
+          <a href="https://github.com/Flubz/LD42" target="_blank" rel="noopener">GitHub</a>
+          &mdash; you can also find the
+          <a href="https://ldjam.com/events/ludum-dare/42/dataskream" target="_blank" rel="noopener">Ludum Dare entry</a>
+          for the full jam writeup and ratings.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

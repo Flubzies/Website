@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Exalted | Riley Clarke</title>
+  <meta name="description" content="The Exalted — a Ludum Dare 40 entry where every bullet you fire stays on the field forever, so your own past actions become the real threat. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Ludum Dare 40 &middot; 2017</span>
+        <h1>The Exalted</h1>
+        <p class="devlog-intro">
+          The Exalted is a solo Ludum Dare 40 entry built around the theme
+          "the more you have, the worse it is" &mdash; every bullet you fire
+          stays on the field forever, and every upgrade you pick up makes
+          your own past shots more dangerous too.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity3D</li>
+          <li>Photoshop</li>
+          <li>BFXR</li>
+          <li>Bosca Ceoil</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://flubz.itch.io/the-exalted" target="_blank" rel="noopener">Play on itch.io &rarr;</a>
+          <a href="https://github.com/Flubz/TheExalted" target="_blank" rel="noopener">View code on GitHub &rarr;</a>
+        </div>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/the-exalted/gameplay-01.mp4" autoplay loop muted playsinline></video>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/Xb8MfTpIJ2U" title="The Exalted submission video" loading="lazy" allowfullscreen></iframe>
+      </div>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          I read the theme as a warning about accumulation rather than a
+          prompt about hoarding resources, so I built a shooter where the
+          bullets you fire never despawn &mdash; they just sit on the field,
+          permanently, as hazards you now have to dodge yourself. Picking up
+          damage upgrades makes every one of those bullets hit harder too,
+          including any that ricochet back at you, so getting stronger also
+          means the field you're standing in gets more dangerous. The
+          opponent is passive; you don't really lose to it, you lose to the
+          pile of your own past actions catching up with you.
+        </p>
+        <video class="devlog-img" src="../Assets/the-exalted/gameplay-02.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Controls</h2>
+        <p>
+          Controls were kept simple by design, since the whole game hinges
+          on movement and positioning around a field you're actively making
+          more dangerous with every shot you take.
+        </p>
+        <img class="devlog-img" src="../Assets/the-exalted/controls-diagram.png" alt="Controls diagram for The Exalted" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Results</h2>
+        <p>
+          The Exalted finished 175th overall out of the jam's full field,
+          with a strong 39th place finish on Theme &mdash; the category I
+          cared most about nailing given how directly the core mechanic ties
+          back to the prompt. Audio and Humor landed lower, which tracks with
+          how little of the roughly four hours I spent on the soundtrack
+          compared to everything else.
+        </p>
+        <video class="devlog-img" src="../Assets/the-exalted/gameplay-03.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Post-Jam Reflection</h2>
+        <p>
+          The initial WebGL build on itch.io ran into deployment issues that
+          cost me time I hadn't budgeted for, which was the clearest lesson
+          from this jam: leave room after the timer stops for fixes and for
+          actually promoting the thing, rather than treating submission as
+          the finish line. Even so, I was glad to walk away with a complete,
+          playable game and a theme score I was proud of.
+        </p>
+        <video class="devlog-img" src="../Assets/the-exalted/gameplay-04.mp4" autoplay loop muted playsinline></video>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          The Exalted is playable in-browser on
+          <a href="https://flubz.itch.io/the-exalted" target="_blank" rel="noopener">itch.io</a>,
+          with the full source and the
+          <a href="https://ldjam.com/events/ludum-dare/40/the-exalted" target="_blank" rel="noopener">Ludum Dare entry</a>
+          both up for anyone who wants the full jam writeup and ratings.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &mdash; Games Programmer</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
