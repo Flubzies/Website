@@ -1012,6 +1012,10 @@ body.cinematic-mode .project-body > p:not(.project-role) {
     flex-direction: column;
     gap: 4px;
   }
+
+  .cinematic-toggle {
+    display: none;
+  }
 }
 
 /* Contact */
