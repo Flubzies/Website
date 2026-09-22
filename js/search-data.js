@@ -3,7 +3,7 @@
 const SEARCH_INDEX = [
   {
     "title": "State of Decay 3",
-    "role": "Games Programmer \u00b7 Wushu Studios, contracted by Undead Labs",
+    "role": "Games Programmer \u00b7 Wushu Studios, contracted by Undead Labs (Microsoft)",
     "url": "projects/sod3.html",
     "tags": [
       "C++",
@@ -14,7 +14,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Fall Guys",
-    "role": "Games Programmer \u00b7 Wushu Studios, contracted by Mediatonic",
+    "role": "Games Programmer \u00b7 Wushu Studios, contracted by Mediatonic (Epic Games)",
     "url": "projects/fallguys.html",
     "tags": [
       "C#",
@@ -25,7 +25,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Destruction AllStars",
-    "role": "Junior Programmer \u00b7 Wushu Studios, contracted by Lucid Games",
+    "role": "Junior Programmer \u00b7 Wushu Studios, contracted by Lucid Games (Sony)",
     "url": "projects/das.html",
     "tags": [
       "C++",
