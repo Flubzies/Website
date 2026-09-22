@@ -6,7 +6,7 @@
   <title>Riley Clarke | Games Programmer</title>
   <meta name="description" content="Riley Clarke, Games Programmer specializing in Unity (C#) and Unreal Engine (C++).">
   <link rel="icon" href="Assets/favicon.png?v=2">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
@@ -53,8 +53,9 @@
 
         <div class="project-grid">
 
-          <a class="project-card" href="projects/sod3.html">
+          <a class="project-card" href="projects/sod3.html" data-locked="true">
             <div class="project-thumb">
+              <span class="lock-badge">&#128274; Early Access</span>
               <video src="Assets/sod3/HeroSOD3.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="project-body">
@@ -68,14 +69,12 @@
                 State of Decay 3, an open-world survival game from Undead
                 Labs.
               </p>
-              <p>
-                [redacted]
-                [redacted]
-                since this is active, confidential work.
-              </p>
               <ul class="tech-tags">
                 <li>C++</li>
                 <li>Unreal Engine 5</li>
+                <li>Perforce</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                [redacted]
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -95,15 +94,12 @@
                 Contributed to Fall Guys' Creative Mode, the in-game toolset
                 that lets players build and publish their own levels.
               </p>
-              <p>
-                Built multiselect for the level editor around a single pivot
-                object that broadcast delta transforms to the rest of the
-                selection, plus object rotation and general feature work and
-                bug fixing.
-              </p>
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity</li>
+                <li>Perforce</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Editor Tooling</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -124,15 +120,45 @@
                 working on creative mode object placement and lifecycle
                 before shifting to pre-release critical fixes.
               </p>
-              <p>
-                Built object placement and lifecycle management for creative
-                mode in Unreal Engine C++, debugged multiplayer issues
-                using custom builds and servers, and owned the badge and
-                achievement UI.
-              </p>
               <ul class="tech-tags">
                 <li>C++</li>
                 <li>Unreal Engine</li>
+                <li>Perforce</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Multiplayer</li>
+              </ul>
+              <span class="project-cta">Read the development story &rarr;</span>
+            </div>
+          </a>
+
+          <a class="project-card" href="projects/aljakun.html" data-locked="true">
+            <div class="project-thumb">
+              <span class="lock-badge">&#128274; Early Access</span>
+              <video src="Assets/aljakun/hero-reveal.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <h3>Aljakun</h3>
+                <span class="project-date">Solo Project &middot; Ongoing</span>
+              </div>
+              <p class="project-role">Solo project &middot; programmer, systems designer &amp; AI</p>
+              <p>
+                A hex-grid, deck-based tactics game built from scratch in
+                Unity, with a heuristic beam-search AI opponent, procedural
+                map and hex-grid generation, and a self-play analytics
+                pipeline that drives card balancing from real match data.
+              </p>
+              <ul class="tech-tags">
+                <li>C#</li>
+                <li>Unity</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>UI Toolkit</li>
+                <li>Unity Sentis</li>
+                <li>DOTween</li>
+                <li>NUnit</li>
+                <li>Procedural Generation</li>
+                <li>Custom Editor Tooling</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -154,20 +180,18 @@
                 a data-driven ability framework, and a custom fog of war
                 system.
               </p>
-              <p>
-                Built on Mirror networking with dedicated Windows client and
-                headless Linux server builds, full RTS selection/command
-                systems (drag-select, control groups, rally points), and a
-                hand-rolled raycast-based vision system with runtime
-                procedural mesh generation.
-              </p>
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity 2020.3</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Mirror Networking</li>
                 <li>NavMesh</li>
                 <li>Odin</li>
                 <li>DOTween</li>
+                <li>ParrelSync</li>
+                <li>Dedicated Server</li>
+                <li>Fog of War</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -189,21 +213,18 @@
                 build their kit from twelve abilities across four sets instead of
                 picking a fixed character.
               </p>
-              <p>
-                Built a Scriptable-Object-driven ability framework for fast,
-                designer-friendly iteration, a pooled particle/projectile system
-                (<code>PoolManager</code>), and a custom complex-collider tool
-                inspired by Unreal's FBX static mesh pipeline.
-              </p>
               <ul class="tech-tags">
                 <li>C#</li>
-                <li>Unity 2018.3</li>
+                <li>Unity 2018.3 (HDRP)</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>FMOD</li>
                 <li>Odin</li>
                 <li>DOTween</li>
                 <li>Rewired</li>
-                <li>FMOD</li>
                 <li>Cinemachine</li>
-                <li>HDRP</li>
+                <li>Object Pooling</li>
+                <li>Custom Editor Tooling</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -225,18 +246,16 @@
                 one of the pinballs bouncing around the arena and launch it at
                 them instead.
               </p>
-              <p>
-                Damage, knockback, and ring-outs all route through a shared
-                <code>Health</code>/<code>HealthDamager</code> framework, with
-                a <code>BallSpawner</code> escalating how many pinballs are in
-                play as the match goes on.
-              </p>
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity 2019.1 (LWRP)</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Rewired</li>
                 <li>Odin</li>
                 <li>DOTween</li>
+                <li>TextMesh Pro</li>
+                <li>Local Multiplayer</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -261,10 +280,14 @@
               <ul class="tech-tags">
                 <li>C++</li>
                 <li>Unreal Engine</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Maya</li>
                 <li>ZBrush</li>
                 <li>Substance Painter</li>
+                <li>Photoshop</li>
                 <li>FMOD Studio</li>
+                <li>LMMS</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -285,16 +308,14 @@
                 voxelized terrain in an infinite world, built from scratch in
                 Unreal Engine 4.
               </p>
-              <p>
-                Terrain is generated from simplex noise sampled across multiple
-                octaves, stored in a custom chunked voxel data structure, and
-                rendered efficiently using instanced static meshes for
-                repeated elements like grass.
-              </p>
               <ul class="tech-tags">
                 <li>C++</li>
                 <li>Unreal Engine 4</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Procedural Generation</li>
+                <li>Voxel Terrain</li>
+                <li>Simplex Noise</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -319,7 +340,11 @@
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity3D</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Local Multiplayer</li>
                 <li>Blender</li>
+                <li>Photoshop</li>
                 <li>Mixamo</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
@@ -344,8 +369,16 @@
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Odin</li>
                 <li>DOTween</li>
+                <li>Amplify Shader Editor</li>
+                <li>Blender</li>
+                <li>Maya</li>
+                <li>ZBrush</li>
+                <li>Photoshop</li>
+                <li>Ableton Live</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -367,10 +400,15 @@
                 in the dark.
               </p>
               <ul class="tech-tags">
+                <li>C#</li>
                 <li>Unity</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Maya</li>
                 <li>Blender</li>
                 <li>Substance Painter</li>
+                <li>Photoshop</li>
+                <li>Bosca Ceoil</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -392,18 +430,15 @@
                 placing blocks to build safe paths across hazards the bots
                 can't cross on their own.
               </p>
-              <p>
-                Built on a Prefab/ScriptableObject block system with a
-                shared abstract base class, a singleton
-                <code>LevelManager</code> for runtime level loading, and a
-                switch-case state machine driving bot movement.
-              </p>
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>VRTK</li>
                 <li>Odin</li>
                 <li>DOTween</li>
+                <li>Finite State Machine AI</li>
                 <li>Blender</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
@@ -428,6 +463,9 @@
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity3D</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Local Multiplayer</li>
                 <li>Blender</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
@@ -450,17 +488,16 @@
                 module, controlled entirely with the accelerometer
                 and gyroscope.
               </p>
-              <p>
-                Levels are generated from cellular automata and marching
-                squares, enemies and projectiles run through an object
-                pooling system, and a weapon rarity system feeds into
-                where loot spawns for run-to-run variety.
-              </p>
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity3D</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Procedural Generation</li>
                 <li>Object Pooling</li>
+                <li>Accelerometer Controls</li>
+                <li>Photoshop</li>
+                <li>BFXR</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -484,7 +521,11 @@
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity3D</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Photoshop</li>
+                <li>BFXR</li>
+                <li>Bosca Ceoil</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -508,7 +549,11 @@
               <ul class="tech-tags">
                 <li>C#</li>
                 <li>Unity3D</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Accelerometer Controls</li>
                 <li>Photoshop</li>
+                <li>Bosca Ceoil</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -530,9 +575,10 @@
                 with a physical Rubik's Cube.
               </p>
               <ul class="tech-tags">
+                <li>Level Design</li>
+                <li>Physical Prototyping</li>
                 <li>Blender</li>
                 <li>Photoshop</li>
-                <li>Level Design</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -550,6 +596,20 @@
     </div>
   </footer>
 
+  <div class="lock-gate" id="lockGate" hidden>
+    <div class="lock-gate-box">
+      <button type="button" class="lock-gate-close" id="lockGateClose" aria-label="Close">&times;</button>
+      <h2>Early Access</h2>
+      <p>This project isn't public yet. Enter the password to preview it.</p>
+      <form id="lockGateForm">
+        <input type="password" id="lockGateInput" placeholder="Password" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary">Unlock</button>
+      </form>
+      <p class="lock-gate-error" id="lockGateError" hidden>Incorrect password, try again.</p>
+    </div>
+  </div>
+
   <script src="js/script.js?v=4"></script>
+  <script src="js/project-lock.js"></script>
 </body>
 </html>

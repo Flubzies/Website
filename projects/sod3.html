@@ -6,7 +6,18 @@
   <title>State of Decay 3 | Riley Clarke</title>
   <meta name="description" content="State of Decay 3, contract work as a games programmer at Wushu Studios, contracted by Undead Labs, [redacted]. Development breakdown by Riley Clarke.">
   <link rel="icon" href="../Assets/favicon.png?v=2">
-  <link rel="stylesheet" href="../css/style.css?v=5">
+  <link rel="stylesheet" href="../css/style.css?v=8">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("flubzies-early-access") !== "granted") {
+          document.documentElement.classList.add("locked");
+        }
+      } catch (e) {
+        document.documentElement.classList.add("locked");
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -42,6 +53,9 @@
         <ul class="tech-tags">
           <li>C++</li>
           <li>Unreal Engine 5</li>
+          <li>Perforce</li>
+          <li class="tag-spacer" aria-hidden="true"></li>
+          [redacted]
         </ul>
         <div class="project-links">
           <a href="https://www.youtube.com/watch?v=J4irGDddl04" target="_blank" rel="noopener">State of Decay 3 reveal trailer &rarr;</a>
@@ -119,6 +133,25 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
+        [redacted]
+        <p>
+          [redacted]
+          the work has grown well beyond it. Over three years I've also
+          contributed to the vehicles' physics and handling, a library of
+          driving assists (things like airborne control, submerging in
+          water, burnouts and handbrake behaviour), the runtime data and
+          attribute systems vehicles run on, and a large in-editor debug and
+          tuning tool used by the whole vehicle team, alongside seat,
+          entry/exit and input work that ties vehicles into the rest of the
+          game. It adds up to hundreds of submitted changes across well over
+          two hundred files, including a handful to Unreal's own vehicle
+          physics systems.
+        </p>
+      </section>
+
+      <!-- References section temporarily hidden
+      <section class="devlog-section">
+        <hr class="devlog-divider">
         <h2>References</h2>
         <ul class="team-list">
           <li><a href="https://www.linkedin.com/in/dewhirstgames/" target="_blank" rel="noopener">David Dewhirst</a></li>
@@ -126,14 +159,15 @@
           <li><a href="https://www.linkedin.com/in/daniel-mayles/" target="_blank" rel="noopener">Dan Mayles</a></li>
         </ul>
       </section>
+      -->
 
       <section class="devlog-section devlog-closing">
         <hr class="devlog-divider">
         <p>
           This is active, confidential contract work for Undead Labs, so I
           can't share source, footage of my own, or go much deeper than
-          [redacted]
-          system's design at a high level if you're curious.
+          [redacted] and
+          vehicle systems' design at a high level if you're curious.
         </p>
       </section>
 
@@ -147,6 +181,20 @@
     </div>
   </footer>
 
+  <div class="lock-gate" id="lockGate" data-redirect="../index.html#projects" hidden>
+    <div class="lock-gate-box">
+      <button type="button" class="lock-gate-close" id="lockGateClose" aria-label="Close">&times;</button>
+      <h2>Early Access</h2>
+      <p>This project isn't public yet. Enter the password to preview it.</p>
+      <form id="lockGateForm">
+        <input type="password" id="lockGateInput" placeholder="Password" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary">Unlock</button>
+      </form>
+      <p class="lock-gate-error" id="lockGateError" hidden>Incorrect password, try again.</p>
+    </div>
+  </div>
+
   <script src="../js/script.js"></script>
+  <script src="../js/project-lock.js"></script>
 </body>
 </html>

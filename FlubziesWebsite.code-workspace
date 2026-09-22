@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "../../Photoshop/Portfolio"
+		},
+		{
+			"path": "../ZetaCore"
 		}
 	],
 	"settings": {}

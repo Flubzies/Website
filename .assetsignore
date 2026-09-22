@@ -4,3 +4,4 @@
 scripts
 wrangler.jsonc
 *.code-workspace
+.wrangler

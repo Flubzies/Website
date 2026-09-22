@@ -327,6 +327,111 @@ a.project-card:hover .project-thumb::after {
   padding: 24px;
 }
 
+.lock-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(13, 15, 20, 0.85);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Early-access password gate */
+
+html.locked .site-header,
+html.locked main,
+html.locked .site-footer {
+  display: none;
+}
+
+.lock-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 6, 10, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.lock-gate[hidden] {
+  display: none;
+}
+
+.lock-gate-box {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+}
+
+.lock-gate-box h2 {
+  margin: 0 0 8px;
+}
+
+.lock-gate-box p {
+  color: var(--text-muted);
+  margin: 0 0 20px;
+}
+
+.lock-gate-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.lock-gate-close:hover {
+  color: var(--text);
+}
+
+#lockGateForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#lockGateInput {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+#lockGateInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.lock-gate-error {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin: 12px 0 0;
+}
+
 .project-meta {
   display: flex;
   flex-wrap: wrap;
@@ -370,6 +475,16 @@ a.project-card:hover .project-thumb::after {
   font-size: 0.78rem;
 }
 
+.tech-tags li.tag-spacer {
+  background: none;
+  border: none;
+  border-left: 1px solid var(--border);
+  align-self: stretch;
+  width: 0;
+  padding: 0;
+  margin: 0 2px;
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -380,8 +495,6 @@ a.project-card:hover .project-thumb::after {
 
 body.cinematic-mode .project-grid {
   grid-template-columns: 1fr;
-  max-width: 920px;
-  margin: 0 auto;
   gap: 56px;
 }
 
@@ -554,6 +667,60 @@ body.cinematic-mode .project-body > p:not(.project-role) {
   border: 1px solid var(--border);
   background: var(--bg-alt);
   margin: 20px auto;
+}
+
+.devlog-gallery {
+  position: relative;
+  margin: 20px auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.devlog-gallery .devlog-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.devlog-gallery .devlog-img.is-active {
+  opacity: 1;
+}
+
+.devlog-gallery-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.devlog-gallery-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(232, 234, 240, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.devlog-gallery-dot.is-active {
+  background: var(--accent);
+  transform: scale(1.25);
 }
 
 .devlog-diagram {

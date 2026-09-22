@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aljakun | Riley Clarke</title>
+  <meta name="description" content="Aljakun, a hex-grid deck-based tactics game built solo in Unity, with a from-scratch heuristic beam-search AI, procedural map generation, and a self-play analytics pipeline that drives card balancing. Development breakdown by Riley Clarke.">
+  <link rel="icon" href="../Assets/favicon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css?v=8">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("flubzies-early-access") !== "granted") {
+          document.documentElement.classList.add("locked");
+        }
+      } catch (e) {
+        document.documentElement.classList.add("locked");
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">Riley Clarke</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../resume.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="devlog">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+
+      <header class="devlog-header">
+        <span class="project-date">Solo Project &middot; Ongoing</span>
+        <h1>Aljakun</h1>
+        <p class="devlog-intro">
+          Aljakun is a hex-grid, deck-based tactics game I&rsquo;m building
+          solo in Unity (C#), with the bulk of the engineering landing in the
+          last five months of active development on top of an eighteen-month
+          history. Beyond gameplay content, it&rsquo;s a testbed for systems
+          built from scratch: a heuristic beam-search AI opponent, a self-play
+          analytics pipeline that drives card balancing from real match data,
+          procedural map and hex-grid generation, and a fair amount of custom
+          editor and debugging tooling.
+        </p>
+        <ul class="tech-tags">
+          <li>C#</li>
+          <li>Unity</li>
+          <li>Git</li>
+          <li class="tag-spacer" aria-hidden="true"></li>
+          <li>UI Toolkit</li>
+          <li>Unity Sentis</li>
+          <li>DOTween</li>
+          <li>NUnit</li>
+          <li>Procedural Generation</li>
+          <li>Custom Editor Tooling</li>
+        </ul>
+      </header>
+
+      <video class="devlog-hero-img" src="../Assets/aljakun/hero-reveal.mp4" autoplay loop muted playsinline></video>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The Project</h2>
+        <p>
+          I&rsquo;m building Aljakun solo, acting as programmer, systems
+          designer, and (out of necessity) AI researcher. It&rsquo;s the
+          project I use to build things properly from scratch rather than
+          reach for a plugin: a hand-rolled search-based AI, procedural
+          generation with a deterministic seed, and a balancing pipeline
+          driven by real simulated match data instead of gut feel.
+        </p>
+        <p>
+          I also built, and later retired, a full imitation-learning AI
+          pipeline: state encoding, ONNX inference, an external training
+          loop. It&rsquo;s documented below alongside everything that
+          shipped, since cutting a system you&rsquo;ve invested months in is
+          its own kind of engineering judgment, not just a footnote.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Design: Core Concept &amp; Battle</h2>
+        <p>
+          Aljakun is a single-player tactics battle wrapped in a roguelike
+          run: two controllers, a player and an AI, on a shared hex board,
+          with tokens that move and attack under imperfect information. Each
+          match is meant to read as a small, solvable puzzle rather than a
+          stat-trading slog, closer to Into the Breach&rsquo;s &ldquo;solve the
+          board&rdquo; tactics than Hearthstone&rsquo;s combat math, with a
+          genre neighborhood that also includes Inscryption, Slay the Spire,
+          Blue Prince, and the old Yu-Gi-Oh! board spin-offs.
+        </p>
+        <p>
+          Each side commands tokens on the hex grid to defeat the enemy
+          Keeper. Positioning is the game: tokens are placed and moved
+          deliberately, and the board itself (terrain tiles, hazards, snares)
+          is as much a piece to read as the tokens are. Every critter token
+          has its own move-set and attack-set, so knowing the shape of a
+          token&rsquo;s reach before you commit to a placement matters as much
+          as its stats. The AI plays under the same rules as the player for
+          the most part, with a few extra buffs (better deck synergies,
+          stronger tokens) that scale in as a run progresses to keep it
+          challenging.
+        </p>
+        <div class="video-embed">
+          <video src="../Assets/aljakun/gameplay-clip.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <div class="devlog-gallery" data-gallery>
+          <img class="devlog-img is-active" src="../Assets/aljakun/move-range.webp" alt="Blue highlighted hexes showing a token's available move range on the board" loading="lazy">
+          <img class="devlog-img" src="../Assets/aljakun/attack-range.webp" alt="Red highlighted hexes showing a token's available attack range on the board" loading="lazy">
+          <div class="devlog-gallery-dots"></div>
+        </div>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>AI Opponent: Heuristic Beam Search</h2>
+        <p>
+          The AI is a from-scratch decision engine (~8,800 lines across 35
+          files), built as a <strong>best-first beam search over sequences of
+          actions within a single turn</strong> rather than a classic minimax
+          tree. Each turn it generates every legal action, expands a
+          priority-ordered frontier capped by beam width and branching
+          factor, under a time budget and a hard node cap, then commits to
+          the best sequence found.
+        </p>
+        <p>A few pieces push it past a textbook beam search:</p>
+        <ul>
+          <li><strong>Transposition table</strong>: hashes states so duplicate positions from different move orders aren&rsquo;t re-explored, while better re-arrivals still update the best-known score.</li>
+          <li><strong>Quiescence extension</strong>: extends depth through &ldquo;volatile&rdquo; positions (a tactical exchange mid-resolution) instead of stopping mid-sequence.</li>
+          <li><strong>Limited-discrepancy search</strong>: biases expansion toward the top-ranked branch at each node, concentrating the time budget where it matters.</li>
+          <li><strong>Admissible upper-bound pruning</strong>: cuts frontier nodes that can&rsquo;t beat the current best outcome even in the best case.</li>
+          <li><strong>Flat heuristic fallback</strong>: kicks in if the tree search times out or degenerates, so the AI never stalls.</li>
+        </ul>
+
+        <figure class="devlog-diagram">
+          <svg viewBox="0 0 760 150" role="img" aria-label="Each turn, the AI generates all legal actions, expands a beam-capped frontier, scores and prunes weak branches, and commits to the best sequence found." xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="alj-beam-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+            </defs>
+
+            <rect x="10" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="95" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">All Legal Actions</text>
+            <text x="95" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">generated per turn</text>
+
+            <rect x="200" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="285" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Frontier Expansion</text>
+            <text x="285" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">beam width, node cap</text>
+
+            <rect x="390" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="475" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Score &amp; Prune</text>
+            <text x="475" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">upper-bound cutoffs</text>
+
+            <rect x="580" y="30" width="170" height="90" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"></rect>
+            <text x="665" y="68" text-anchor="middle" font-size="12.5" fill="var(--accent)">Best Sequence</text>
+            <text x="665" y="92" text-anchor="middle" font-size="10.5" fill="var(--accent)" opacity="0.85">committed this turn</text>
+
+            <line x1="180" y1="75" x2="199" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-beam-arrow)"></line>
+            <line x1="370" y1="75" x2="389" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-beam-arrow)"></line>
+            <line x1="560" y1="75" x2="579" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#alj-beam-arrow)"></line>
+          </svg>
+          <figcaption>Every turn runs the same pipeline: expand the legal actions into a beam-capped frontier, score and prune under a time/node budget, and commit to the best sequence found, with a transposition table and quiescence extension keeping it honest along the way.</figcaption>
+        </figure>
+
+        <p>
+          The evaluator is a hand-tuned scoring function: material value,
+          discounted hand-card value, per-unit exposure/threat penalties,
+          win-condition-tile proximity, and a dynamic aggression curve based
+          on how far ahead or behind the AI is. Supporting utilities add
+          game-specific awareness: threat propagation along movement paths,
+          danger from hidden pieces, terrain-conversion decisions, and a
+          watchdog that recovers from turns that stall.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>The ML Experiment: Attempted and Retired</h2>
+        <p>
+          Before landing on the heuristic search above, I built and iterated
+          on a full <strong>imitation-learning AI pipeline</strong> over
+          several months, tracked through versioned commits, and eventually
+          cut it once the heuristic search proved faster, more controllable,
+          and simply stronger.
+        </p>
+        <p>What it actually did:</p>
+        <ul>
+          <li><strong>State encoding</strong>: a full game-state snapshot into fixed-size tensors: a multi-channel board grid (piece presence, team, normalized attack/health, keeper/snare/hidden flags, a card-vocabulary index), a global feature vector, a hand-slot tensor, and per-legal-action features.</li>
+          <li><strong>Inference</strong>: a policy-scoring network run through Unity&rsquo;s Sentis package from an exported ONNX model, masking illegal actions and picking the top legal move.</li>
+          <li><strong>Training loop</strong>: a headless build runner self-played thousands of matches, logged every decision, then handed the log to an external Python pipeline that trained the model and reimported it into Unity.</li>
+        </ul>
+
+        <figure class="devlog-diagram">
+          <svg viewBox="0 0 780 260" role="img" aria-label="Self-play matches fed both a training log, which drove an ONNX/Sentis inference pipeline that was later removed, and the analytics balancing pipeline, which survived." xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="alj-ml-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+              <marker id="alj-ml-arrow-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"></path>
+              </marker>
+            </defs>
+
+            <rect x="10" y="20" width="170" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="95" y="50" text-anchor="middle" font-size="12" fill="currentColor">Self-Play Matches</text>
+            <text x="95" y="70" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.65">headless, thousands of runs</text>
+
+            <rect x="210" y="20" width="150" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="285" y="50" text-anchor="middle" font-size="12" fill="currentColor">Training Log</text>
+            <text x="285" y="70" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.65">every decision recorded</text>
+
+            <rect x="390" y="20" width="150" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="465" y="50" text-anchor="middle" font-size="12" fill="currentColor">Python Trainer</text>
+            <text x="465" y="70" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.65">external pipeline</text>
+
+            <rect x="570" y="20" width="200" height="70" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"></rect>
+            <text x="670" y="48" text-anchor="middle" font-size="12" fill="var(--accent)">ONNX + Sentis</text>
+            <text x="670" y="65" text-anchor="middle" font-size="12" fill="var(--accent)">Inference</text>
+            <text x="670" y="82" text-anchor="middle" font-size="10" fill="var(--accent)" opacity="0.85">removed</text>
+
+            <line x1="180" y1="55" x2="209" y2="55" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-ml-arrow)"></line>
+            <line x1="360" y1="55" x2="389" y2="55" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-ml-arrow)"></line>
+            <line x1="540" y1="55" x2="569" y2="55" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#alj-ml-arrow-accent)"></line>
+
+            <line x1="95" y1="90" x2="95" y2="168" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-ml-arrow)"></line>
+
+            <rect x="10" y="170" width="220" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="120" y="200" text-anchor="middle" font-size="12" fill="currentColor">Analytics Pipeline</text>
+            <text x="120" y="220" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.65">kept, repurposed below</text>
+          </svg>
+          <figcaption>Self-play fed two paths: the training log that drove ONNX/Sentis inference, which I removed once the heuristic search won out, and the self-play/analytics infrastructure, which survived and now drives card balancing instead.</figcaption>
+        </figure>
+
+        <p>
+          This was a real, working system with a genuine train/infer/deploy
+          loop, not a prototype that never ran. What beat it wasn&rsquo;t a
+          lack of effort but the tradeoffs of the approach: the heuristic
+          search was faster to iterate on, easier to debug (every decision
+          traces back to a readable score breakdown instead of a black box),
+          and stronger in head-to-head testing. I pulled the ML runtime, the
+          Sentis dependency, and the training tooling in one commit, and the
+          self-play infrastructure it left behind got repurposed for the
+          balancing pipeline below, so the experiment&rsquo;s most reusable
+          part survived even though the model didn&rsquo;t.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Card &amp; Deck System</h2>
+        <p>
+          The run deck is a persistent list of card data plus a parallel
+          per-card list of &ldquo;embues&rdquo; (stacking buffs picked up
+          mid-run). Cards are either static ScriptableObject assets or
+          runtime-instantiated clones (needed when a card is duplicated or
+          modified in a fight), and the deck is snapshotted at the start of
+          each fight so clones are discarded and the deck reverts cleanly on
+          a loss or retry, without touching the shared source assets.
+        </p>
+        <img class="devlog-img" src="../Assets/aljakun/editor-card-inspector.png" alt="The custom CardData inspector in Unity, showing effect triggers, an auto-generated description preview, artist and kin fields, and the offering/deck-draw-chance math for a card" loading="lazy">
+        <p>
+          One edge case worth calling out: a &ldquo;Keeper
+          Substitution&rdquo; event lets a Keeper (a special win-condition
+          unit) legitimately sit inside the drawable run deck between fights,
+          but it must never come up as a normal draw. Getting that right
+          needed dedicated draw-index logic that skips Keeper-flagged cards,
+          now pinned down by two regression tests guarding against that bug
+          class.
+        </p>
+        <p>
+          An &ldquo;embue&rdquo; is the run&rsquo;s main deckbuilding lever:
+          sacrifice a token to grant another token its attack-set, move-set,
+          and highest resource cost. It reads as a simple combine-two-cards
+          event on screen, but it&rsquo;s doing real work underneath,
+          swapping out the same move-set/attack-set data the AI search and
+          battle-grid system query, so an embued token behaves identically to
+          a native one in every system downstream rather than needing
+          special-cased handling.
+        </p>
+        <img class="devlog-img" src="../Assets/aljakun/embue-event.webp" alt="The Embue event screen: choose a token to embue, with the run's critter tokens laid out as selectable hex cards" loading="lazy">
+        <p>
+          Every critter belongs to a &ldquo;kin&rdquo; (Avian-kin, Grub-kin,
+          Grim-kin, Fae-kin, Briar-kin, Brood-kin, Therion-kin, or Kinless),
+          which groups the roster for draft pools and synergy reads without
+          constraining move-sets to a theme. The full roster is hand-drawn:
+        </p>
+        <div class="video-embed">
+          <video src="../Assets/aljakun/critter-roster.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <p>
+          Creature and card art by Matchbookbaby and Kaiju_Tattoos.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Procedural Map &amp; Hex-Grid Systems</h2>
+        <p>Two separate procedural systems, built for different purposes:</p>
+        <ul>
+          <li><strong>Roguelike overworld map</strong>: a node graph generated row by row. Nodes connect to the next row through a lane algorithm: shuffled processing order, candidate next-row nodes within a max column distance, and randomized outgoing edges while tracking connectivity to avoid orphaned nodes. Node types (Fight, Event, Shop) are assigned under spacing rules, no two Fight nodes back to back, soft limits on events between fights. The layout is deterministic from a run seed, so any map can be regenerated or replayed exactly.</li>
+          <li><strong>Battle-grid hex system</strong>: full axial/offset hex math (position/grid conversion, six-directional neighbor lookup, distance calculations) backing a terrain-type system (movement cost, obstacles, damage-on-landing hazards) used by both the AI search and live gameplay. It supports switching between a legacy square grid and a true hex grid at the data level.</li>
+        </ul>
+
+        <figure class="devlog-diagram">
+          <svg viewBox="0 0 760 260" role="img" aria-label="The overworld map generates row by row: a start node connects to a row of Fight, Event and Shop nodes, which lane into a second row, converging on a boss node, with spacing rules keeping Fight nodes apart." xmlns="http://www.w3.org/2000/svg">
+            <g stroke="currentColor" stroke-width="1.3" opacity="0.55" fill="none">
+              <line x1="380" y1="40" x2="140" y2="95"></line>
+              <line x1="380" y1="40" x2="380" y2="95"></line>
+              <line x1="380" y1="40" x2="620" y2="95"></line>
+              <line x1="140" y1="115" x2="260" y2="165"></line>
+              <line x1="380" y1="115" x2="260" y2="165"></line>
+              <line x1="380" y1="115" x2="500" y2="165"></line>
+              <line x1="620" y1="115" x2="500" y2="165"></line>
+              <line x1="260" y1="185" x2="380" y2="230"></line>
+              <line x1="500" y1="185" x2="380" y2="230"></line>
+            </g>
+
+            <circle cx="380" cy="25" r="18" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+            <text x="380" y="30" text-anchor="middle" font-size="12" fill="currentColor">S</text>
+
+            <g font-size="12" fill="currentColor">
+              <circle cx="140" cy="100" r="18" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+              <text x="140" y="105" text-anchor="middle">F</text>
+              <circle cx="380" cy="100" r="18" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+              <text x="380" y="105" text-anchor="middle">E</text>
+              <circle cx="620" cy="100" r="18" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+              <text x="620" y="105" text-anchor="middle">$</text>
+
+              <circle cx="260" cy="170" r="18" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+              <text x="260" y="175" text-anchor="middle">F</text>
+              <circle cx="500" cy="170" r="18" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+              <text x="500" y="175" text-anchor="middle">E</text>
+            </g>
+
+            <circle cx="380" cy="240" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5"></circle>
+            <text x="380" y="245" text-anchor="middle" font-size="12" fill="var(--accent)">K</text>
+          </svg>
+          <figcaption>The overworld map builds row by row: each node connects into the next row through a lane algorithm that keeps the graph connected, with spacing rules (no two Fight nodes back to back) and a fixed run seed making every layout deterministic and replayable.</figcaption>
+        </figure>
+
+        <div class="video-embed">
+          <video src="../Assets/aljakun/run-map-live.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <p>
+          In the shipped node set that&rsquo;s Rest, Exchange, Fight, Path,
+          Embue, and Mirror nodes, each reachable from the row below through
+          however many lanes the generator drew, with unvisited nodes fogged
+          out until a connecting path is revealed. Between Fights the deck
+          evolves through whichever of those nodes a run visits, so a
+          late-run Match is played with a meaningfully different deck than
+          the one the run started with, not just a harder copy of it.
+        </p>
+        <img class="devlog-img" src="../Assets/aljakun/tile-abyss.webp" alt="A terrain tile info card for Abyss, which only flying or aquatic tokens can cross without halting" loading="lazy">
+        <div class="video-embed">
+          <video src="../Assets/aljakun/editor-terrain-painter.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <p>
+          Terrain layouts are hand-painted in a custom editor tool rather
+          than placed tile-by-tile in the scene: hotkeys assign a terrain
+          type (Ground, Wall, Air, Abyss, Thicket, Bridge, Lava, Keep,
+          Ritual) to a hex under the cursor directly over the layout data
+          asset the battle-grid system reads at runtime.
+        </p>
+        <p>
+          These are the two largest gameplay systems in the codebase by line
+          count, and both the map layout and the battle board get queried
+          heavily by the AI search above.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Between-Fight Exploration (Early Design)</h2>
+        <p>
+          Outside the table itself, the plan is to let the player step away
+          from the board to explore a physical space, working title
+          Mausoleum or Cathedral, not finalized, in the spirit of Blue
+          Prince&rsquo;s mansion or Inscryption&rsquo;s cabin. It would hold
+          clues and puzzles that unlock new tokens, giving meta-progression a
+          second, non-battle mode of play instead of leaving all discovery to
+          random map events. This is genuinely early: shape, pacing, and how
+          it interleaves with the map are all still open, and the models for
+          it are still pending.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Analytics-Driven Balancing Pipeline</h2>
+        <p>
+          This is the piece of the ML era that survived. During self-play
+          matches, a static analytics system records about 20 per-card
+          metrics: damage dealt, kills, times summoned, board presence at a
+          win, eval-swing per decision, and more, merging them into a
+          cumulative dataset across thousands of auto-restarted headless
+          matches, gated behind a minimum-match-count threshold before
+          results are trusted.
+        </p>
+
+        <figure class="devlog-diagram">
+          <svg viewBox="0 0 760 150" role="img" aria-label="Self-play matches produce per-card metrics, which are normalized into a percentile score and baked back into each card's draft weight." xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="alj-analytics-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+            </defs>
+
+            <rect x="10" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="95" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Self-Play Matches</text>
+            <text x="95" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">thousands, headless</text>
+
+            <rect x="200" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="285" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Per-Card Metrics</text>
+            <text x="285" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">~20 stats, cumulative CSV</text>
+
+            <rect x="390" y="30" width="170" height="90" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+            <text x="475" y="68" text-anchor="middle" font-size="12.5" fill="currentColor">Percentile Score</text>
+            <text x="475" y="92" text-anchor="middle" font-size="10.5" fill="currentColor" opacity="0.65">normalized vs. card pool</text>
+
+            <rect x="580" y="30" width="170" height="90" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"></rect>
+            <text x="665" y="68" text-anchor="middle" font-size="12.5" fill="var(--accent)">Draft Weights</text>
+            <text x="665" y="92" text-anchor="middle" font-size="10.5" fill="var(--accent)" opacity="0.85">baked back per card</text>
+
+            <line x1="180" y1="75" x2="199" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-analytics-arrow)"></line>
+            <line x1="370" y1="75" x2="389" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#alj-analytics-arrow)"></line>
+            <line x1="560" y1="75" x2="579" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#alj-analytics-arrow)"></line>
+          </svg>
+          <figcaption>Headless self-play feeds a cumulative per-card dataset, which gets normalized into a percentile &ldquo;analytic power&rdquo; score and baked back into each card&rsquo;s draft weight, so how often a card shows up is driven by measured win-contribution, not a guess.</figcaption>
+        </figure>
+
+        <img class="devlog-img" src="../Assets/aljakun/analytics-csv.png" alt="The cumulative analytics dataset: every card at a 10,000-match count with its power percentile, previous power, and per-summon damage" loading="lazy">
+        <p>
+          Brand-new cards without enough data fall back to a heuristic
+          estimate (attack/health/mobility-based) so they aren&rsquo;t ranked
+          on statistical noise. The loop (headless self-play, CSV
+          accumulation, reload, rebake) is the same self-play infrastructure
+          the ML pipeline used, repointed at a simpler, more durable goal.
+        </p>
+        <div class="video-embed">
+          <video src="../Assets/aljakun/editor-deck-draw-weights.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <p>
+          The rebake lands in an editor window that lists every card sorted
+          by power percentile alongside its live deck-draw chance, so a
+          balance pass is a scroll through one sorted list rather than
+          hunting through 60 separate assets.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>UI Toolkit Interface &amp; the 3D Scroll Panel</h2>
+        <p>
+          The card-inspector panel is built on Unity UI Toolkit rather than
+          the older uGUI/IMGUI, swapping between two layout trees at runtime
+          depending on card type (one for creatures, one for non-creature
+          cards like snares, runes and terrain) and layering 3D-rendered card
+          art and hex move-range visuals beneath the 2D panel via explicit
+          depth ordering. Animation blends DOTween with UI Toolkit&rsquo;s own
+          transition system, with hover/attribute interactions and clickable
+          settings links routed through string IDs.
+        </p>
+        <p>
+          The more distinctive piece is presentation: the panel is a scroll
+          of paper that physically unfurls and rotates in 3D world space,
+          tracking a target pose with safety clamps against runaway
+          transforms and a blended transition between open and closed states
+          rather than a hard cut. Combining screen-space UI Toolkit panels
+          with a 3D-space physical presentation isn&rsquo;t common; most UI
+          Toolkit work stays purely screen-space, and it&rsquo;s one of the
+          more visually distinctive pieces of the project.
+        </p>
+        <div class="video-embed">
+          <video src="../Assets/aljakun/scroll-unfurl.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <img class="devlog-img" src="../Assets/aljakun/card-details-yokai.webp" alt="The unfurled scroll detail panel for the Yokai token, showing its stat block, ability text, and move/attack range over the hex board" loading="lazy">
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Developer Tooling &amp; Engineering Practices</h2>
+        <ul>
+          <li><strong>In-game dev terminal</strong>: command history, autocomplete, and roughly 30 commands covering forced match outcomes, grid/game-state dumps, revealing hidden info for debugging, live-swapping gameplay-settings profiles, save-state snapshotting, and more.</li>
+          <li><strong>Custom editor tooling</strong> (46 scripts): a headless build-and-run runner for self-play/training, bulk card-data editors, procedural mountain-mesh generation for terrain, automated PBR material import, terrain texture-splatting, full game-state JSON dumpers, and a build gate that blocks builds unless edit-mode tests pass.</li>
+          <li><strong>Crash forensics</strong>: a full undo/redo history system doubles as an automatic error-replay recorder; on an unhandled runtime error it writes the action history plus a JSON replay file with AI-phase context, so a crash can be reproduced and stepped through after the fact.</li>
+          <li><strong>Test suite</strong>: NUnit/Unity Test Framework coverage over the AI search engine, pathing/threat routing, save serialization, undo history, and card mechanics, including the two Keeper Substitution regression tests above.</li>
+          <li><strong>Repo hygiene</strong>: a custom pre-commit hook strips known-volatile, auto-regenerated blocks (like font atlas churn) from staged assets before diffing, and reverts a commit automatically if the only real change was that noise.</li>
+        </ul>
+      </section>
+
+      <section class="devlog-section devlog-closing">
+        <hr class="devlog-divider">
+        <p>
+          Aljakun is still in active development and doesn&rsquo;t have a
+          public build to share just yet. This write-up covers the systems
+          and design as they stand today, with screenshots and clips pulled
+          straight from the current dev build.
+        </p>
+      </section>
+
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer<span class="visually-hidden">Hidden text</span></p>
+    </div>
+  </footer>
+
+  <div class="lock-gate" id="lockGate" data-redirect="../index.html#projects" hidden>
+    <div class="lock-gate-box">
+      <button type="button" class="lock-gate-close" id="lockGateClose" aria-label="Close">&times;</button>
+      <h2>Early Access</h2>
+      <p>This project isn't public yet. Enter the password to preview it.</p>
+      <form id="lockGateForm">
+        <input type="password" id="lockGateInput" placeholder="Password" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary">Unlock</button>
+      </form>
+      <p class="lock-gate-error" id="lockGateError" hidden>Incorrect password, try again.</p>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/project-lock.js"></script>
+</body>
+</html>
