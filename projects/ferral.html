@@ -6,21 +6,32 @@
   <title>Ferral | Riley Clarke</title>
   <meta name="description" content="Ferral, a Werewolf-inspired social deduction game built solo in 24 hours for a university game jam. Development breakdown by Riley Clarke.">
   <link rel="icon" href="../Assets/favicon.png?v=2">
-  <link rel="stylesheet" href="../css/style.css?v=11">
+  <link rel="stylesheet" href="../css/style.css?v=12">
 </head>
 <body>
 
   <header class="site-header">
     <nav class="nav container">
       <a href="../index.html" class="logo">Riley Clarke</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
+      <div class="nav-right">
+        <div class="nav-search" id="navSearch">
+          <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search projects" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <div class="nav-search-panel" id="navSearchPanel" hidden>
+            <input type="text" class="nav-search-input" id="navSearchInput" placeholder="Search projects" autocomplete="off">
+            <ul class="nav-search-results" id="navSearchResults"></ul>
+          </div>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
         <li><a href="../index.html#home">Home</a></li>
         <li><a href="../resume.html">CV</a></li>
         <li><a href="../contact.html">Contact</a></li>
       </ul>
+      </div>
     </nav>
   </header>
 
@@ -138,5 +149,7 @@
   </footer>
 
   <script src="../js/script.js"></script>
+  <script src="../js/search-data.js"></script>
+  <script src="../js/search.js"></script>
 </body>
 </html>

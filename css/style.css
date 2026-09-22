@@ -86,6 +86,12 @@ code {
   font-size: 1.1rem;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -119,6 +125,112 @@ code {
   height: 2px;
   background: var(--text);
   display: block;
+}
+
+/* Header search */
+
+.nav-search {
+  position: relative;
+}
+
+.nav-search-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-search-toggle:hover,
+.nav-search-toggle[aria-expanded="true"] {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.nav-search-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-search-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  z-index: 110;
+}
+
+.nav-search-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.nav-search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.nav-search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.nav-search-results:not(:empty) {
+  margin-top: 8px;
+}
+
+.nav-search-results li + li {
+  margin-top: 2px;
+}
+
+.nav-search-results a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.nav-search-results a:hover {
+  background: var(--accent-soft);
+}
+
+.nav-search-result-title {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.nav-search-result-role {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.nav-search-empty {
+  padding: 8px 10px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 
 /* Hero */
