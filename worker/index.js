@@ -24,7 +24,7 @@ async function handleDevHistory(request, env, ctx) {
     return cached;
   }
 
-  if (!env.GITHUB_TOKEN) {
+  if (!env.ZC_GITHUB_TOKEN) {
     return jsonResponse({ error: "not_configured" }, 503);
   }
 
@@ -34,7 +34,7 @@ async function handleDevHistory(request, env, ctx) {
       `https://api.github.com/repos/${GITHUB_REPO}/commits?per_page=50`,
       {
         headers: {
-          Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+          Authorization: `Bearer ${env.ZC_GITHUB_TOKEN}`,
           "User-Agent": "flubzies-website",
           Accept: "application/vnd.github+json",
         },
