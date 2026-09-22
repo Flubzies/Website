@@ -2,6 +2,7 @@
 .claude
 .gitignore
 scripts
+worker
 wrangler.jsonc
 *.code-workspace
 .wrangler
