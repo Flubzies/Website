@@ -775,6 +775,214 @@ body.cinematic-mode .project-body > p:not(.project-role) {
   object-fit: cover;
 }
 
+/* Development hours breakdown (folded commit-level data) */
+
+.hours-fold {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  padding: 18px 20px;
+}
+
+.hours-fold summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+}
+
+.hours-fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.hours-fold summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hours-fold[open] summary::before {
+  content: "\2212";
+}
+
+.hours-fold-hint {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.hours-fold-body {
+  margin-top: 18px;
+}
+
+.hours-fold-body p {
+  color: var(--text-muted);
+  max-width: 720px;
+  font-size: 0.95rem;
+}
+
+.hours-chart {
+  margin: 20px 0 28px;
+}
+
+.hours-bar {
+  display: flex;
+  width: 100%;
+  height: 20px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.hours-bar-segment {
+  height: 100%;
+}
+
+.hours-bar-segment--off {
+  background: var(--accent);
+}
+
+.hours-bar-segment--work {
+  background: var(--text-muted);
+  opacity: 0.4;
+}
+
+.hours-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 14px 0 0;
+  padding: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.hours-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hours-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.hours-swatch--off {
+  background: var(--accent);
+}
+
+.hours-swatch--work {
+  background: var(--text-muted);
+  opacity: 0.4;
+}
+
+.hours-chart-note {
+  margin: 10px 0 0 !important;
+  font-size: 0.8rem !important;
+  color: var(--text-muted);
+}
+
+.hours-table-wrap {
+  max-height: 420px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.hours-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  z-index: 1;
+}
+
+.hours-table td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.hours-table td.hours-td-msg {
+  white-space: normal;
+  color: var(--text-muted);
+}
+
+.hours-td-time {
+  font-variant-numeric: tabular-nums;
+}
+
+.hours-dow {
+  color: var(--text-muted);
+  margin-left: 6px;
+  font-size: 0.78rem;
+}
+
+.hours-td-hash {
+  font-family: "Cascadia Code", Consolas, monospace;
+  color: var(--text-muted);
+}
+
+.hours-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.hours-tag--off {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.hours-tag--work {
+  background: rgba(154, 161, 178, 0.14);
+  color: var(--text-muted);
+}
+
+.hours-tag--lunch,
+.hours-tag--vacation {
+  background: rgba(154, 161, 178, 0.08);
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+.hours-row--lunch,
+.hours-row--vacation {
+  opacity: 0.6;
+}
+
+@media (max-width: 720px) {
+  .hours-table {
+    font-size: 0.75rem;
+  }
+
+  .hours-table td,
+  .hours-table thead th {
+    padding: 7px 10px;
+  }
+}
+
 /* Contact */
 
 .contact-list {
