@@ -28,25 +28,41 @@ async function handleDevHistory(request, env, ctx) {
     return jsonResponse({ error: "not_configured" }, 503);
   }
 
+  const token = env.ZC_GITHUB_TOKEN.trim();
+
   let upstream;
   try {
     upstream = await fetch(
       `https://api.github.com/repos/${GITHUB_REPO}/commits?per_page=50`,
       {
         headers: {
-          Authorization: `Bearer ${env.ZC_GITHUB_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           "User-Agent": "flubzies-website",
           Accept: "application/vnd.github+json",
         },
       }
     );
   } catch (err) {
-    return jsonResponse({ error: "upstream_unreachable" }, 502);
+    return jsonResponse(
+      { error: "upstream_unreachable", message: String(err), tokenLen: token.length },
+      502
+    );
   }
 
   if (!upstream.ok) {
     const detail = await upstream.text();
-    return jsonResponse({ error: "upstream_error", status: upstream.status, detail }, 502);
+    const upstreamHeaders = Object.fromEntries(upstream.headers.entries());
+    return jsonResponse(
+      {
+        error: "upstream_error",
+        status: upstream.status,
+        detail,
+        tokenLen: token.length,
+        rawTokenLen: env.ZC_GITHUB_TOKEN.length,
+        upstreamHeaders,
+      },
+      502
+    );
   }
 
   const data = await upstream.json();
