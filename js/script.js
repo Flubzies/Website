@@ -1,5 +1,18 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const resumeEmbedWrap = document.querySelector(".resume-embed-wrap");
+
+if (resumeEmbedWrap) {
+  const resumeEmbed = resumeEmbedWrap.querySelector(".resume-embed");
+
+  const scaleResumeEmbed = () => {
+    resumeEmbed.style.transform = `scale(${resumeEmbedWrap.clientWidth / 850})`;
+  };
+
+  scaleResumeEmbed();
+  window.addEventListener("resize", scaleResumeEmbed);
+}
+
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
 

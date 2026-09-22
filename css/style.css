@@ -661,13 +661,19 @@ body.cinematic-mode .project-body > p:not(.project-role) {
   max-width: 700px;
 }
 
-.resume-embed {
+.resume-embed-wrap {
+  max-width: 850px;
+  aspect-ratio: 8.5 / 11;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  background: #fff;
-  max-width: 850px;
+}
+
+.resume-embed {
+  width: 850px;
   aspect-ratio: 8.5 / 11;
+  background: #fff;
+  transform-origin: top left;
 }
 
 .resume-embed iframe {
