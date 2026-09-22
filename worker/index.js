@@ -45,7 +45,8 @@ async function handleDevHistory(request, env, ctx) {
   }
 
   if (!upstream.ok) {
-    return jsonResponse({ error: "upstream_error", status: upstream.status }, 502);
+    const detail = await upstream.text();
+    return jsonResponse({ error: "upstream_error", status: upstream.status, detail }, 502);
   }
 
   const data = await upstream.json();
