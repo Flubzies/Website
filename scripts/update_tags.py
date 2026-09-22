@@ -69,7 +69,7 @@ TAG_TIER = {
     "Finite State Machine AI": 5,
     "Dedicated Server": 5,
     "Fog of War": 5,
-    [redacted]
+    "Gameplay Systems": 5,
     "Physical Prototyping": 5,
     "Accelerometer Controls": 5,
     "Voxel Terrain": 5,
@@ -152,7 +152,7 @@ TAGS = {
     ],
     "sod3": [
         "C++", "Unreal Engine 5", "Perforce",
-        [redacted]
+        "Gameplay Systems",
     ],
     "sqube": [
         "Blender", "Photoshop", "Level Design", "Physical Prototyping",

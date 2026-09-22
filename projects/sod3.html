@@ -4,20 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>State of Decay 3 | Riley Clarke</title>
-  <meta name="description" content="State of Decay 3, contract work as a games programmer at Wushu Studios, contracted by Undead Labs, [redacted]. Development breakdown by Riley Clarke.">
+  <meta name="description" content="State of Decay 3, contract work as a games programmer at Wushu Studios, contracted by Undead Labs. Development breakdown by Riley Clarke.">
   <link rel="icon" href="../Assets/favicon.png?v=2">
-  <link rel="stylesheet" href="../css/style.css?v=10">
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem("flubzies-early-access") !== "granted") {
-          document.documentElement.classList.add("locked");
-        }
-      } catch (e) {
-        document.documentElement.classList.add("locked");
-      }
-    })();
-  </script>
+  <link rel="stylesheet" href="../css/style.css?v=11">
 </head>
 <body>
 
@@ -45,17 +34,17 @@
         <h1>State of Decay 3</h1>
         <p class="devlog-intro">
           Since 2023 I've worked as a games programmer at Wushu Studios on a
-          long-running contract with Undead Labs, [redacted]
-          system for State of Decay 3. This is ongoing work under NDA, so this
-          page stays deliberately high-level: the goals and behaviours
-          of the system rather than any implementation detail.
+          long-running contract with Undead Labs, contributing gameplay and
+          engine-level systems work on State of Decay 3. This is ongoing work
+          under NDA, so this page stays deliberately high-level for now, and
+          a more detailed write-up is ready to go once the NDA is lifted.
         </p>
         <ul class="tech-tags">
           <li>C++</li>
           <li>Unreal Engine 5</li>
           <li>Perforce</li>
           <li class="tag-spacer" aria-hidden="true"></li>
-          [redacted]
+          <li>Gameplay Systems</li>
         </ul>
         <div class="project-links">
           <a href="https://www.youtube.com/watch?v=J4irGDddl04" target="_blank" rel="noopener">State of Decay 3 reveal trailer &rarr;</a>
@@ -70,15 +59,14 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        [redacted]
+        <h2>State Blending &amp; Transitions</h2>
         <p>
-          [redacted] rather than sitting on
-          a fixed rig, blending between free-look and an auto-aligning
-          follow mode, and adjusting which end of the vehicle it frames when
-          driving forward versus reversing. Getting the hand-off between
-          those states to feel natural, rather than snapping or fighting the
-          [redacted]
-          system.
+          A significant part of this work is about blending smoothly between
+          different behavioural states rather than snapping between them:
+          calculating and interpolating rotations so hand-offs feel natural
+          rather than fighting against player input. Getting those
+          transitions to read as fluid, rather than mechanical, was one of
+          the trickier parts of the system.
         </p>
         <video class="devlog-img" src="../Assets/sod3/sod_gp_1.mp4" autoplay loop muted playsinline></video>
         <p class="devlog-caption">
@@ -89,15 +77,14 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        [redacted]
+        <h2>Reactive Systems</h2>
         <p>
-          [redacted]
-          happening to the vehicle: field of view shifting with speed
-          [redacted]
-          damage sources, and positional response to jumps, landings,
-          suspension and drifting. Each of those contributors is tuned and
-          blended independently so they read clearly without piling on top
-          of each other.
+          A lot of the system's character comes from how it responds to
+          what's happening in the game world: parameters shifting
+          dynamically with player state, procedural feedback layered from
+          multiple sources, and positional response to a range of gameplay
+          events. Each contributor is tuned and blended independently so it
+          reads clearly without piling on top of the others.
         </p>
         <video class="devlog-img" src="../Assets/sod3/sod_gp_2.mp4" autoplay loop muted playsinline></video>
         <p class="devlog-caption">
@@ -108,13 +95,13 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        [redacted]
+        <h2>Robustness &amp; Edge Cases</h2>
         <p>
-          [redacted]
-          constantly fighting the player for control. I built handling that
-          [redacted]
-          smoothly rather than popping, with fallback behaviour for the
-          tighter spaces a naive push-in can't resolve on its own.
+          Working in an open world means handling awkward situations
+          robustly without constantly fighting the player for control. I
+          built handling that manages these cases gracefully, easing in and
+          out smoothly rather than popping, with fallback behaviour for the
+          situations a naive solution can't resolve on its own.
         </p>
       </section>
 
@@ -122,31 +109,43 @@
         <hr class="devlog-divider">
         <h2>Data-Driven Tuning</h2>
         <p>
-          [redacted]
-          [redacted]
-          iterated on without engineering involvement. Alongside that, I
-          [redacted]
-          made tracking down exactly which part of the system was causing an
-          unwanted feel far faster than guesswork.
+          Most of the system's behaviour is exposed to designers through
+          data rather than hardcoded in C++, so it can be iterated on
+          without engineering involvement. Alongside that, I built debug
+          tooling to visualise and tune behaviour live, which made tracking
+          down exactly which part of the system was causing an unwanted
+          result far faster than guesswork.
         </p>
       </section>
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        [redacted]
+        <h2>Broader Contributions</h2>
         <p>
-          [redacted]
-          the work has grown well beyond it. Over three years I've also
-          contributed to the vehicles' physics and handling, a library of
-          driving assists (things like airborne control, submerging in
-          water, burnouts and handbrake behaviour), the runtime data and
-          attribute systems vehicles run on, and a large in-editor debug and
-          tuning tool used by the whole vehicle team, alongside seat,
-          entry/exit and input work that ties vehicles into the rest of the
-          game. It adds up to hundreds of submitted changes across well over
-          two hundred files, including a handful to Unreal's own vehicle
-          physics systems.
+          This has been the largest single piece of the contract, but the
+          work has grown well beyond it. Over three years I've also
+          contributed to core physics and handling systems, a library of
+          supporting gameplay assists, the runtime data and attribute
+          systems those rely on, and a large in-editor debug and tuning tool
+          used across the team, alongside other supporting systems that tie
+          into the rest of the game. It adds up to hundreds of submitted
+          changes across well over two hundred files, including native
+          engine-level contributions as part of a broader pattern of
+          nativisation work: converting higher-level logic into native C++
+          for performance.
         </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Detailed Write-up</h2>
+        <p id="sod3WriteupPending">
+          A more detailed technical write-up of this work exists and is
+          ready to go, it's just being held back until the NDA on this
+          project is lifted. Check back after that point for the deeper
+          implementation notes.
+        </p>
+        <div id="sod3WriteupContent"></div>
       </section>
 
       <!-- References section temporarily hidden
@@ -166,8 +165,8 @@
         <p>
           This is active, confidential contract work for Undead Labs, so I
           can't share source, footage of my own, or go much deeper than
-          [redacted] and
-          vehicle systems' design at a high level if you're curious.
+          what's above, but I'm happy to talk through the systems' design at
+          a high level if you're curious.
         </p>
       </section>
 
@@ -181,20 +180,7 @@
     </div>
   </footer>
 
-  <div class="lock-gate" id="lockGate" data-redirect="../index.html#projects" hidden>
-    <div class="lock-gate-box">
-      <button type="button" class="lock-gate-close" id="lockGateClose" aria-label="Close">&times;</button>
-      <h2>Early Access</h2>
-      <p>This project isn't public yet. Enter the password to preview it.</p>
-      <form id="lockGateForm">
-        <input type="password" id="lockGateInput" placeholder="Password" autocomplete="off" required>
-        <button type="submit" class="btn btn-primary">Unlock</button>
-      </form>
-      <p class="lock-gate-error" id="lockGateError" hidden>Incorrect password, try again.</p>
-    </div>
-  </div>
-
   <script src="../js/script.js"></script>
-  <script src="../js/project-lock.js"></script>
+  <script src="../js/sod3-writeup-data.js"></script>
 </body>
 </html>
