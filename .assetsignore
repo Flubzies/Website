@@ -1,0 +1,6 @@
+.git
+.claude
+.gitignore
+scripts
+wrangler.jsonc
+*.code-workspace
