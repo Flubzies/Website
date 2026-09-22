@@ -36,7 +36,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Aljakun",
-    "role": "Solo project \u00b7 programmer, systems designer & AI",
+    "role": "Solo project \u00b7 Ongoing \u00b7 programmer, systems designer & AI",
     "url": "projects/aljakun.html",
     "tags": [
       "C#",
@@ -52,7 +52,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "RedMirror",
-    "role": "Solo project \u00b7 programmer, network architect & designer",
+    "role": "Solo project \u00b7 2021 \u00b7 programmer, network architect & designer",
     "url": "projects/redmirror.html",
     "tags": [
       "C#",
@@ -69,7 +69,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Niloc",
-    "role": "Programmer / Project Manager \u00b7 team of 6 (+3 outsourced)",
+    "role": "Programmer / Project Manager \u00b7 Major Project (2019) \u00b7 team of 6 (+3 outsourced)",
     "url": "projects/niloc.html",
     "tags": [
       "C#",
@@ -86,7 +86,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Robrawl",
-    "role": "Programmer / Project Manager \u00b7 team of 5",
+    "role": "Programmer / Project Manager \u00b7 Brains Eden (2019) \u00b7 team of 5",
     "url": "projects/robrawl.html",
     "tags": [
       "C#",
@@ -101,7 +101,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "WorldCraft",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 Advanced Games Implementation Project (2019)",
     "url": "projects/worldcraft.html",
     "tags": [
       "C++",
@@ -114,7 +114,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Plucky",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 2nd-Year University Project (2018)",
     "url": "projects/plucky.html",
     "tags": [
       "C#",
@@ -129,7 +129,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Venture",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 University Module Project (2018)",
     "url": "projects/venture.html",
     "tags": [
       "C#",
@@ -144,7 +144,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Badwiches",
-    "role": "Programmer / Project Manager \u00b7 team of 5",
+    "role": "Programmer / Project Manager \u00b7 Ludum Dare 45 (2019) \u00b7 team of 5",
     "url": "projects/badwiches.html",
     "tags": [
       "C++",
@@ -160,7 +160,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Ferral",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 University Game Jam (2018)",
     "url": "projects/ferral.html",
     "tags": [
       "C#",
@@ -174,7 +174,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "DataSkream",
-    "role": "Programmer \u00b7 team of 4",
+    "role": "Programmer \u00b7 Ludum Dare 42 (2018) \u00b7 team of 4",
     "url": "projects/dataskream.html",
     "tags": [
       "C#",
@@ -192,7 +192,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Lumina",
-    "role": "Programmer / 3D Artist / PM \u00b7 team of 4",
+    "role": "Programmer / 3D Artist / PM \u00b7 Alakajam #3 (2018) \u00b7 team of 4",
     "url": "projects/lumina.html",
     "tags": [
       "C#",
@@ -207,7 +207,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Gallant",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 University Game Jam (2018)",
     "url": "projects/gallant.html",
     "tags": [
       "C#",
@@ -219,7 +219,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "The Exalted",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 Ludum Dare 40 (2017)",
     "url": "projects/the-exalted.html",
     "tags": [
       "C#",
@@ -232,7 +232,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Valiant",
-    "role": "Solo project",
+    "role": "Solo project \u00b7 Charity Game Jam (2017)",
     "url": "projects/valiant.html",
     "tags": [
       "C#",
@@ -245,7 +245,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Sqube",
-    "role": "Artist / Designer \u00b7 team of 8",
+    "role": "Artist / Designer \u00b7 Dare to be Digital (2016) \u00b7 team of 8",
     "url": "projects/sqube.html",
     "tags": [
       "Level Design",
