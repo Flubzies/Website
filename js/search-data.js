@@ -3,7 +3,7 @@
 const SEARCH_INDEX = [
   {
     "title": "State of Decay 3",
-    "role": "Games Programmer \u00b7 Wushu Studios, contracted by Undead Labs (Microsoft)",
+    "role": "Games Programmer \u00b7 Wushu Studios (2023\u20132026) Contracted by Undead Labs, Microsoft",
     "url": "projects/sod3.html",
     "tags": [
       "C++",
@@ -14,7 +14,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Fall Guys",
-    "role": "Games Programmer \u00b7 Wushu Studios, contracted by Mediatonic (Epic Games)",
+    "role": "Games Programmer \u00b7 Wushu Studios (2023) Contracted by Mediatonic, Epic Games",
     "url": "projects/fallguys.html",
     "tags": [
       "C#",
@@ -25,7 +25,7 @@ const SEARCH_INDEX = [
   },
   {
     "title": "Destruction AllStars",
-    "role": "Junior Programmer \u00b7 Wushu Studios, contracted by Lucid Games (Sony)",
+    "role": "Junior Programmer \u00b7 Wushu Studios (2019\u20132021) Contracted by Lucid Games, Sony",
     "url": "projects/das.html",
     "tags": [
       "C++",
@@ -100,6 +100,49 @@ const SEARCH_INDEX = [
     ]
   },
   {
+    "title": "WorldCraft",
+    "role": "Solo project",
+    "url": "projects/worldcraft.html",
+    "tags": [
+      "C++",
+      "Unreal Engine 4",
+      "Git",
+      "Procedural Generation",
+      "Voxel Terrain",
+      "Simplex Noise"
+    ]
+  },
+  {
+    "title": "Plucky",
+    "role": "Solo project",
+    "url": "projects/plucky.html",
+    "tags": [
+      "C#",
+      "Unity",
+      "Git",
+      "VRTK",
+      "Odin",
+      "DOTween",
+      "Finite State Machine AI",
+      "Blender"
+    ]
+  },
+  {
+    "title": "Venture",
+    "role": "Solo project",
+    "url": "projects/venture.html",
+    "tags": [
+      "C#",
+      "Unity3D",
+      "Git",
+      "Procedural Generation",
+      "Object Pooling",
+      "Accelerometer Controls",
+      "Photoshop",
+      "BFXR"
+    ]
+  },
+  {
     "title": "Badwiches",
     "role": "Programmer / Project Manager \u00b7 team of 5",
     "url": "projects/badwiches.html",
@@ -113,19 +156,6 @@ const SEARCH_INDEX = [
       "Photoshop",
       "FMOD Studio",
       "LMMS"
-    ]
-  },
-  {
-    "title": "WorldCraft",
-    "role": "Solo project",
-    "url": "projects/worldcraft.html",
-    "tags": [
-      "C++",
-      "Unreal Engine 4",
-      "Git",
-      "Procedural Generation",
-      "Voxel Terrain",
-      "Simplex Noise"
     ]
   },
   {
@@ -176,21 +206,6 @@ const SEARCH_INDEX = [
     ]
   },
   {
-    "title": "Plucky",
-    "role": "Solo project",
-    "url": "projects/plucky.html",
-    "tags": [
-      "C#",
-      "Unity",
-      "Git",
-      "VRTK",
-      "Odin",
-      "DOTween",
-      "Finite State Machine AI",
-      "Blender"
-    ]
-  },
-  {
     "title": "Gallant",
     "role": "Solo project",
     "url": "projects/gallant.html",
@@ -200,21 +215,6 @@ const SEARCH_INDEX = [
       "Git",
       "Local Multiplayer",
       "Blender"
-    ]
-  },
-  {
-    "title": "Venture",
-    "role": "Solo project",
-    "url": "projects/venture.html",
-    "tags": [
-      "C#",
-      "Unity3D",
-      "Git",
-      "Procedural Generation",
-      "Object Pooling",
-      "Accelerometer Controls",
-      "Photoshop",
-      "BFXR"
     ]
   },
   {

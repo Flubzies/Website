@@ -24,9 +24,11 @@ CARD_RE = re.compile(
 )
 TAG_RE = re.compile(r'<li(?:\s+class="tag-spacer"[^>]*)?>(.*?)</li>')
 TAG_STRIP_RE = re.compile(r"<[^>]+>")
+BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 
 
 def strip_tags(text):
+    text = BR_RE.sub(" ", text)
     return html.unescape(TAG_STRIP_RE.sub("", text).strip())
 
 

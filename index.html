@@ -6,13 +6,15 @@
   <title>Riley Clarke | Games Programmer</title>
   <meta name="description" content="Riley Clarke, Games Programmer specializing in Unity (C#) and Unreal Engine (C++).">
   <link rel="icon" href="Assets/favicon.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
 
   <header class="site-header">
     <nav class="nav container">
-      <a href="#home" class="logo">Riley Clarke</a>
       <div class="nav-right">
         <div class="nav-search" id="navSearch">
           <button type="button" class="nav-search-toggle" id="navSearchToggle" aria-label="Search projects" aria-expanded="false">
@@ -27,7 +29,7 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" class="active">Home</a></li>
         <li><a href="resume.html">CV</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -38,8 +40,8 @@
   <main>
     <section id="home" class="hero">
       <div class="container hero-inner">
-        <p class="eyebrow">Games Programmer &middot; Liverpool, UK</p>
         <h1>Riley Clarke</h1>
+        <p class="eyebrow">Games Programmer &middot; Liverpool, UK</p>
         <p class="hero-blurb">
           Professional games developer with over 7 years of industry experience.<br>
           Proficient in <strong>C++</strong> with <strong>Unreal Engine</strong> &amp;
@@ -71,9 +73,8 @@
             <div class="project-body">
               <div class="project-meta">
                 <h3>State of Decay 3</h3>
-                <span class="project-date">Wushu Studios, contracted by Undead Labs (Microsoft) &middot; 2023&ndash;2026</span>
               </div>
-              <p class="project-role">Games Programmer &middot; Wushu Studios, contracted by Undead Labs (Microsoft)</p>
+              <p class="project-role">Games Programmer &middot; Wushu Studios (2023&ndash;2026)<br>Contracted by Undead Labs, Microsoft</p>
               <p>
                 Ongoing contract work contributing gameplay and engine-level
                 systems for State of Decay 3, an open-world survival game
@@ -97,9 +98,8 @@
             <div class="project-body">
               <div class="project-meta">
                 <h3>Fall Guys</h3>
-                <span class="project-date">Wushu Studios, contracted by Mediatonic (Epic Games) &middot; 2023</span>
               </div>
-              <p class="project-role">Games Programmer &middot; Wushu Studios, contracted by Mediatonic (Epic Games)</p>
+              <p class="project-role">Games Programmer &middot; Wushu Studios (2023)<br>Contracted by Mediatonic, Epic Games</p>
               <p>
                 Contributed to Fall Guys' Creative Mode, the in-game toolset
                 that lets players build and publish their own levels.
@@ -122,9 +122,8 @@
             <div class="project-body">
               <div class="project-meta">
                 <h3>Destruction AllStars</h3>
-                <span class="project-date">Wushu Studios, contracted by Lucid Games (Sony) &middot; 2019&ndash;2021</span>
               </div>
-              <p class="project-role">Junior Programmer &middot; Wushu Studios, contracted by Lucid Games (Sony)</p>
+              <p class="project-role">Junior Programmer &middot; Wushu Studios (2019&ndash;2021)<br>Contracted by Lucid Games, Sony</p>
               <p>
                 My first project as a junior programmer in the industry,
                 working on creative mode object placement and lifecycle
@@ -271,6 +270,96 @@
             </div>
           </a>
 
+          <a class="project-card" href="projects/worldcraft.html">
+            <div class="project-thumb">
+              <video src="Assets/worldcraft/hero-title-card.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <h3>WorldCraft</h3>
+                <span class="project-date">Advanced Games Implementation Project &middot; 2019</span>
+              </div>
+              <p class="project-role">Solo project</p>
+              <p>
+                A Minecraft-inspired technical demo: procedurally generated,
+                voxelized terrain in an infinite world, built from scratch in
+                Unreal Engine 4.
+              </p>
+              <ul class="tech-tags">
+                <li>C++</li>
+                <li>Unreal Engine 4</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Procedural Generation</li>
+                <li>Voxel Terrain</li>
+                <li>Simplex Noise</li>
+              </ul>
+              <span class="project-cta">Read the development story &rarr;</span>
+            </div>
+          </a>
+
+          <a class="project-card" href="projects/plucky.html">
+            <div class="project-thumb">
+              <video src="Assets/plucky/gameplay-01.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <h3>Plucky</h3>
+                <span class="project-date">2nd-Year University Project &middot; 2018</span>
+              </div>
+              <p class="project-role">Solo project</p>
+              <p>
+                A VR puzzle game about chaperoning AI bots through a level
+                towards the exit: players reshape the terrain by
+                placing blocks to build safe paths across hazards the bots
+                can't cross on their own.
+              </p>
+              <ul class="tech-tags">
+                <li>C#</li>
+                <li>Unity</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>VRTK</li>
+                <li>Odin</li>
+                <li>DOTween</li>
+                <li>Finite State Machine AI</li>
+                <li>Blender</li>
+              </ul>
+              <span class="project-cta">Read the development story &rarr;</span>
+            </div>
+          </a>
+
+          <a class="project-card" href="projects/venture.html">
+            <div class="project-thumb">
+              <img src="Assets/venture/gameplay-01.gif" alt="Venture gameplay: navigating a procedurally generated level and fighting enemies on Android" loading="lazy">
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <h3>Venture</h3>
+                <span class="project-date">University Module Project &middot; 2018</span>
+              </div>
+              <p class="project-role">Solo project</p>
+              <p>
+                A procedurally generated roguelike shooter for Android,
+                built solo in Unity for a Games Hardware &amp; Architecture
+                module, controlled entirely with the accelerometer
+                and gyroscope.
+              </p>
+              <ul class="tech-tags">
+                <li>C#</li>
+                <li>Unity3D</li>
+                <li>Git</li>
+                <li class="tag-spacer" aria-hidden="true"></li>
+                <li>Procedural Generation</li>
+                <li>Object Pooling</li>
+                <li>Accelerometer Controls</li>
+                <li>Photoshop</li>
+                <li>BFXR</li>
+              </ul>
+              <span class="project-cta">Read the development story &rarr;</span>
+            </div>
+          </a>
+
           <a class="project-card" href="projects/badwiches.html">
             <div class="project-thumb">
               <img src="Assets/badwiches/hero-title-card.png" alt="Badwiches title card: a customer peers over the sandwich stand counter" loading="lazy" style="object-position: center 20%;">
@@ -298,34 +387,6 @@
                 <li>Photoshop</li>
                 <li>FMOD Studio</li>
                 <li>LMMS</li>
-              </ul>
-              <span class="project-cta">Read the development story &rarr;</span>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/worldcraft.html">
-            <div class="project-thumb">
-              <video src="Assets/worldcraft/hero-title-card.mp4" autoplay loop muted playsinline></video>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">
-                <h3>WorldCraft</h3>
-                <span class="project-date">Advanced Games Implementation Project &middot; 2019</span>
-              </div>
-              <p class="project-role">Solo project</p>
-              <p>
-                A Minecraft-inspired technical demo: procedurally generated,
-                voxelized terrain in an infinite world, built from scratch in
-                Unreal Engine 4.
-              </p>
-              <ul class="tech-tags">
-                <li>C++</li>
-                <li>Unreal Engine 4</li>
-                <li>Git</li>
-                <li class="tag-spacer" aria-hidden="true"></li>
-                <li>Procedural Generation</li>
-                <li>Voxel Terrain</li>
-                <li>Simplex Noise</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
@@ -424,37 +485,6 @@
             </div>
           </a>
 
-          <a class="project-card" href="projects/plucky.html">
-            <div class="project-thumb">
-              <video src="Assets/plucky/gameplay-01.mp4" autoplay loop muted playsinline></video>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">
-                <h3>Plucky</h3>
-                <span class="project-date">2nd-Year University Project &middot; 2018</span>
-              </div>
-              <p class="project-role">Solo project</p>
-              <p>
-                A VR puzzle game about chaperoning AI bots through a level
-                towards the exit: players reshape the terrain by
-                placing blocks to build safe paths across hazards the bots
-                can't cross on their own.
-              </p>
-              <ul class="tech-tags">
-                <li>C#</li>
-                <li>Unity</li>
-                <li>Git</li>
-                <li class="tag-spacer" aria-hidden="true"></li>
-                <li>VRTK</li>
-                <li>Odin</li>
-                <li>DOTween</li>
-                <li>Finite State Machine AI</li>
-                <li>Blender</li>
-              </ul>
-              <span class="project-cta">Read the development story &rarr;</span>
-            </div>
-          </a>
-
           <a class="project-card" href="projects/gallant.html">
             <div class="project-thumb">
               <video src="Assets/gallant/gameplay-01.mp4" autoplay loop muted playsinline></video>
@@ -477,37 +507,6 @@
                 <li class="tag-spacer" aria-hidden="true"></li>
                 <li>Local Multiplayer</li>
                 <li>Blender</li>
-              </ul>
-              <span class="project-cta">Read the development story &rarr;</span>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/venture.html">
-            <div class="project-thumb">
-              <img src="Assets/venture/gameplay-01.gif" alt="Venture gameplay: navigating a procedurally generated level and fighting enemies on Android" loading="lazy">
-            </div>
-            <div class="project-body">
-              <div class="project-meta">
-                <h3>Venture</h3>
-                <span class="project-date">University Module Project &middot; 2018</span>
-              </div>
-              <p class="project-role">Solo project</p>
-              <p>
-                A procedurally generated roguelike shooter for Android,
-                built solo in Unity for a Games Hardware &amp; Architecture
-                module, controlled entirely with the accelerometer
-                and gyroscope.
-              </p>
-              <ul class="tech-tags">
-                <li>C#</li>
-                <li>Unity3D</li>
-                <li>Git</li>
-                <li class="tag-spacer" aria-hidden="true"></li>
-                <li>Procedural Generation</li>
-                <li>Object Pooling</li>
-                <li>Accelerometer Controls</li>
-                <li>Photoshop</li>
-                <li>BFXR</li>
               </ul>
               <span class="project-cta">Read the development story &rarr;</span>
             </div>
