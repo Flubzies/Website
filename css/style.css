@@ -630,8 +630,8 @@ body.cinematic-mode .project-body > p:not(.project-role) {
 }
 
 .ability-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 24px;
 }
@@ -1001,5 +1001,15 @@ body.cinematic-mode .project-body > p:not(.project-role) {
 
   .project-thumb {
     min-height: 100px;
+  }
+
+  .ability-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 960px) and (min-width: 721px) {
+  .ability-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
