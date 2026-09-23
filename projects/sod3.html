@@ -47,11 +47,10 @@
         <span class="project-date">Wushu Studios, contracted by Undead Labs (Microsoft) &middot; 2023&ndash;2026</span>
         <h1>State of Decay 3</h1>
         <p class="devlog-intro">
-          Since 2023 I've worked as a games programmer at Wushu Studios on a
-          long-running contract with Undead Labs, contributing gameplay and
-          engine-level systems work on State of Decay 3. This is ongoing work
-          under NDA, so this page stays deliberately high-level for now, and
-          a more detailed write-up is ready to go once the NDA is lifted.
+          This project is still under NDA, so everything below is
+          deliberately genericised, no specific features named. It's my
+          first open-world project, and a huge undertaking, with issues that
+          can crop up in more places than you'd expect.
         </p>
         <ul class="tech-tags">
           <li>C++</li>
@@ -69,14 +68,12 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <h2>Reactive Systems</h2>
+        <h2>Movement &amp; Transitions</h2>
         <p>
-          A lot of the system's character comes from how it responds to
-          what's happening in the game world: parameters shifting
-          dynamically with player state, procedural feedback layered from
-          multiple sources, and positional response to a range of gameplay
-          events. Each contributor is tuned and blended independently so it
-          reads clearly without piling on top of the others.
+          A large part of my work centred on rotations and transitions,
+          keeping motion smooth across a huge range of situations. Any
+          jitter or hitch was mine to track down and sand away, with
+          quaternions used throughout to avoid gimbal lock.
         </p>
         <video class="devlog-img" src="../Assets/sod3/sod_gp_2.mp4" autoplay loop muted playsinline></video>
         <p class="devlog-caption">
@@ -87,13 +84,30 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <h2>Robustness &amp; Edge Cases</h2>
+        <h2>Physics &amp; Submergence</h2>
         <p>
-          Working in an open world means handling awkward situations
-          robustly without constantly fighting the player for control. I
-          built handling that manages these cases gracefully, easing in and
-          out smoothly rather than popping, with fallback behaviour for the
-          situations a naive solution can't resolve on its own.
+          I implemented the game's submergence handling and contributed more
+          broadly to the physics systems, alongside ongoing work nativising
+          Blueprint logic into C++ for performance.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Engine Foundations</h2>
+        <p>
+          I also helped expand core Unreal Engine fundamentals for the team,
+          including primary data assets for designers to build on, and made
+          extensive use of ImGui for in-game debugging.
+        </p>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
+        <h2>Input Handling</h2>
+        <p>
+          Other work included handling input and wiring it through into the
+          physics systems, alongside a range of smaller supporting tasks.
         </p>
       </section>
 
@@ -118,7 +132,7 @@
         <hr class="devlog-divider">
         <h2>Broader Contributions</h2>
         <p>
-          This has been the largest single piece of the contract, but the
+          This has been the largest single piece of the project, but the
           work has grown well beyond it. Over three years I've also
           contributed to core physics and handling systems, a library of
           supporting gameplay assists, the runtime data and attribute
@@ -134,12 +148,10 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <h2>Detailed Write-up</h2>
         <p id="sod3WriteupPending">
-          A more detailed technical write-up of this work exists and is
-          ready to go, it's just being held back until the NDA on this
-          project is lifted. Check back after that point for the deeper
-          implementation notes.
+          This is active work for Undead Labs, so I'm keeping things vague
+          until the NDA lifts, at which point a fuller write-up goes here.
+          Happy to talk through the systems at a high level in the meantime.
         </p>
         <div id="sod3WriteupContent"></div>
       </section>
@@ -155,16 +167,6 @@
         </ul>
       </section>
       -->
-
-      <section class="devlog-section devlog-closing">
-        <hr class="devlog-divider">
-        <p>
-          This is active, confidential contract work for Undead Labs, so I
-          can't share source, footage of my own, or go much deeper than
-          what's above, but I'm happy to talk through the systems' design at
-          a high level if you're curious.
-        </p>
-      </section>
 
       <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
     </div>
