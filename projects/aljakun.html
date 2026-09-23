@@ -94,6 +94,34 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
+        <div class="build-download">
+          <p>
+            Grab the latest Windows build, password-protected while
+            Aljakun is still in active development.
+          </p>
+          <button type="button" class="btn btn-primary build-download-btn" id="buildDownloadBtn">
+            Download
+            <svg class="build-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8"></rect><rect x="13" y="3" width="8" height="8"></rect><rect x="3" y="13" width="8" height="8"></rect><rect x="13" y="13" width="8" height="8"></rect></svg>
+            <svg class="build-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          </button>
+        </div>
+        <details class="dev-history-fold" id="devHistoryFold">
+          <summary>Development History <span class="dev-history-hint">(live from GitHub, click to expand)</span></summary>
+          <div class="dev-history-body">
+            <p>
+              A live feed of the most recent commits to Aljakun&rsquo;s
+              codebase, pulled straight from the repository, so you can see
+              what I&rsquo;m actively working on right now.
+            </p>
+            <div class="dev-history-wrap" id="devHistoryList" tabindex="0">
+              <p class="dev-history-status">Loading recent activity&hellip;</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="devlog-section">
+        <hr class="devlog-divider">
         <h2>Design: Core Concept &amp; Battle</h2>
         <p>
           Aljakun is a single-player tactics battle wrapped in a roguelike
@@ -510,33 +538,28 @@
       <section class="devlog-section devlog-closing">
         <hr class="devlog-divider">
         <p>
-          Aljakun is still in active development and doesn&rsquo;t have a
-          public build to share just yet. This write-up covers the systems
-          and design as they stand today, with screenshots and clips pulled
-          straight from the current dev build.
+          Aljakun is still in active development. This write-up covers the
+          systems and design as they stand today, with screenshots and clips
+          pulled straight from the current dev build.
         </p>
-      </section>
-
-      <section class="devlog-section">
-        <hr class="devlog-divider">
-        <details class="dev-history-fold" id="devHistoryFold">
-          <summary>Development History <span class="dev-history-hint">(live from GitHub, click to expand)</span></summary>
-          <div class="dev-history-body">
-            <p>
-              A live feed of the most recent commits to Aljakun&rsquo;s
-              codebase, pulled straight from the repository, so you can see
-              what I&rsquo;m actively working on right now.
-            </p>
-            <div class="dev-history-wrap" id="devHistoryList" tabindex="0">
-              <p class="dev-history-status">Loading recent activity&hellip;</p>
-            </div>
-          </div>
-        </details>
       </section>
 
       <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
     </div>
   </main>
+
+  <div class="lock-gate" id="buildGate" hidden>
+    <div class="lock-gate-box">
+      <button type="button" class="lock-gate-close" id="buildGateClose" aria-label="Close">&times;</button>
+      <h2>Windows Build</h2>
+      <p>Enter today&rsquo;s password to download the latest build.</p>
+      <form class="lock-gate-form" id="buildGateForm">
+        <input type="password" class="lock-gate-input" id="buildGateInput" placeholder="Password" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary">Unlock &amp; Download</button>
+      </form>
+      <p class="lock-gate-error" id="buildGateError" hidden>Incorrect password, try again.</p>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container">
@@ -548,5 +571,6 @@
   <script src="../js/search-data.js"></script>
   <script src="../js/search.js"></script>
   <script src="../js/dev-history.js"></script>
+  <script src="../js/build-download.js"></script>
 </body>
 </html>
