@@ -6,3 +6,4 @@ worker
 wrangler.jsonc
 *.code-workspace
 .wrangler
+.vscode
