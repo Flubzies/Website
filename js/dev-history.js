@@ -43,9 +43,6 @@
           '<span class="dev-history-time">' +
           ts +
           "</span>" +
-          '<span class="dev-history-hash">' +
-          escapeHtml(c.sha) +
-          "</span>" +
           '<span class="dev-history-msg">' +
           escapeHtml(c.message) +
           "</span>" +
@@ -60,12 +57,10 @@
   function formatDate(iso) {
     var d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
-    return d.toLocaleString(undefined, {
+    return d.toLocaleDateString(undefined, {
       year: "numeric",
       month: "short",
       day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
     });
   }
 

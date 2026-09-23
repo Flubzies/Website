@@ -995,13 +995,6 @@ body.cinematic-mode .project-body > p:not(.project-role) {
   flex: 0 0 auto;
 }
 
-.dev-history-hash {
-  font-family: "Cascadia Code", Consolas, monospace;
-  color: var(--accent);
-  font-size: 0.78rem;
-  flex: 0 0 auto;
-}
-
 .dev-history-msg {
   color: var(--text);
   flex: 1 1 240px;

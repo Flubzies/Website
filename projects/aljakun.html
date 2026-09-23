@@ -10,17 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css?v=12">
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem("flubzies-early-access") !== "granted") {
-          document.documentElement.classList.add("locked");
-        }
-      } catch (e) {
-        document.documentElement.classList.add("locked");
-      }
-    })();
-  </script>
 </head>
 <body>
 
@@ -555,23 +544,9 @@
     </div>
   </footer>
 
-  <div class="lock-gate" id="lockGate" data-redirect="../index.html#projects" hidden>
-    <div class="lock-gate-box">
-      <button type="button" class="lock-gate-close" id="lockGateClose" aria-label="Close">&times;</button>
-      <h2>Early Access</h2>
-      <p>This project isn't public yet. Enter the password to preview it.</p>
-      <form id="lockGateForm">
-        <input type="password" id="lockGateInput" placeholder="Password" autocomplete="off" required>
-        <button type="submit" class="btn btn-primary">Unlock</button>
-      </form>
-      <p class="lock-gate-error" id="lockGateError" hidden>Incorrect password, try again.</p>
-    </div>
-  </div>
-
   <script src="../js/script.js"></script>
   <script src="../js/search-data.js"></script>
   <script src="../js/search.js"></script>
-  <script src="../js/project-lock.js"></script>
   <script src="../js/dev-history.js"></script>
 </body>
 </html>
