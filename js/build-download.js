@@ -1,6 +1,6 @@
 (function () {
   // Password resets manually, at midnight GMT.
-  const PASSWORD = "Aljakun_23092026";
+  const PASSWORD = "a4n1j8Fnka&";
   const DOWNLOAD_URL = "https://github.com/Flubzies/ZetaCore/releases/download/latest-build/Aljakun.zip";
 
   const trigger = document.getElementById("buildDownloadBtn");
