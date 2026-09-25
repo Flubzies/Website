@@ -43,26 +43,14 @@ async function handleDevHistory(request, env, ctx) {
       }
     );
   } catch (err) {
-    return jsonResponse(
-      { error: "upstream_unreachable", message: String(err), tokenLen: token.length },
-      502
-    );
+    console.error("dev-history: GitHub unreachable", String(err));
+    return jsonResponse({ error: "upstream_unreachable" }, 502);
   }
 
   if (!upstream.ok) {
-    const detail = await upstream.text();
-    const upstreamHeaders = Object.fromEntries(upstream.headers.entries());
-    return jsonResponse(
-      {
-        error: "upstream_error",
-        status: upstream.status,
-        detail,
-        tokenLen: token.length,
-        rawTokenLen: env.ZC_GITHUB_TOKEN.length,
-        upstreamHeaders,
-      },
-      502
-    );
+    // Details go to the Worker logs only; the response is public.
+    console.error("dev-history: GitHub error", upstream.status, await upstream.text());
+    return jsonResponse({ error: "upstream_error" }, 502);
   }
 
   const data = await upstream.json();
