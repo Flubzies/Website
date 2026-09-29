@@ -48,9 +48,9 @@
         <h1>State of Decay 3</h1>
         <p class="devlog-intro">
           This project is still under NDA, so everything below is
-          deliberately genericised, no specific features named. It's my
-          first open-world project, and a huge undertaking, with issues that
-          can crop up in more places than you'd expect.
+          deliberately genericised, no specific features named. It's been a
+          huge undertaking, with issues that can crop up in more places than
+          you'd expect.
         </p>
         <ul class="tech-tags">
           <li>C++</li>
@@ -75,7 +75,7 @@
           jitter or hitch was mine to track down and sand away, with
           quaternions used throughout to avoid gimbal lock.
         </p>
-        <video class="devlog-img" src="../Assets/sod3/sod_gp_2.mp4" autoplay loop muted playsinline></video>
+        <video class="devlog-img" src="../Assets/sod3/sod_gp_1.mp4" autoplay loop muted playsinline></video>
         <p class="devlog-caption">
           Gameplay footage courtesy of
           <a href="https://www.youtube.com/watch?v=c5--CgCpM7M" target="_blank" rel="noopener">GameSpot</a>.
@@ -84,43 +84,13 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <h2>Physics &amp; Submergence</h2>
+        <h2>Physics &amp; Engine Foundations</h2>
         <p>
-          I implemented the game's submergence handling and contributed more
-          broadly to the physics systems, alongside ongoing work nativising
-          Blueprint logic into C++ for performance.
-        </p>
-      </section>
-
-      <section class="devlog-section">
-        <hr class="devlog-divider">
-        <h2>Engine Foundations</h2>
-        <p>
-          I also helped expand core Unreal Engine fundamentals for the team,
-          including primary data assets for designers to build on, and made
-          extensive use of ImGui for in-game debugging.
-        </p>
-      </section>
-
-      <section class="devlog-section">
-        <hr class="devlog-divider">
-        <h2>Input Handling</h2>
-        <p>
-          Other work included handling input and wiring it through into the
-          physics systems, alongside a range of smaller supporting tasks.
-        </p>
-      </section>
-
-      <section class="devlog-section">
-        <hr class="devlog-divider">
-        <h2>Data-Driven Tuning</h2>
-        <p>
-          Most of the system's behaviour is exposed to designers through
-          data rather than hardcoded in C++, so it can be iterated on
-          without engineering involvement. Alongside that, I built debug
-          tooling to visualise and tune behaviour live, which made tracking
-          down exactly which part of the system was causing an unwanted
-          result far faster than guesswork.
+          I implemented the game's submergence handling, contributed more
+          broadly to the physics systems and nativised Blueprint logic into
+          C++ for performance. I also helped expand core Unreal Engine
+          fundamentals for the team, such as primary data assets for
+          designers, and used ImGui extensively for in-game debugging.
         </p>
       </section>
 
@@ -130,19 +100,18 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <h2>Broader Contributions</h2>
+        <h2>Input &amp; Data-Driven Tuning</h2>
         <p>
-          This has been the largest single piece of the project, but the
-          work has grown well beyond it. Over three years I've also
-          contributed to core physics and handling systems, a library of
-          supporting gameplay assists, the runtime data and attribute
-          systems those rely on, and a large in-editor debug and tuning tool
-          used across the team, alongside other supporting systems that tie
-          into the rest of the game. It adds up to hundreds of submitted
-          changes across well over two hundred files, including native
-          engine-level contributions as part of a broader pattern of
-          nativisation work: converting higher-level logic into native C++
-          for performance.
+          I handled input and wired it through into the physics systems.
+          Most of the behaviour is exposed to designers as data rather than
+          hardcoded in C++, and I built debug tooling to visualise and tune
+          it live, which made tracking down unwanted results far faster
+          than guesswork.
+        </p>
+        <video class="devlog-img" src="../Assets/sod3/sod_gp_2.mp4" autoplay loop muted playsinline></video>
+        <p class="devlog-caption">
+          Gameplay footage courtesy of
+          <a href="https://www.youtube.com/watch?v=c5--CgCpM7M" target="_blank" rel="noopener">GameSpot</a>.
         </p>
       </section>
 
