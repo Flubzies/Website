@@ -118,6 +118,9 @@
             </div>
           </div>
         </details>
+        <div class="video-embed">
+          <video src="../Assets/aljakun/zc-table-scene.mp4" autoplay loop muted playsinline></video>
+        </div>
       </section>
 
       <section class="devlog-section">
@@ -417,17 +420,35 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <h2>Between-Fight Exploration (Early Design)</h2>
+        <h2>The Sanctuary &amp; Unlocks</h2>
         <p>
-          Outside the table itself, the plan is to let the player step away
-          from the board to explore a physical space, working title
-          Mausoleum or Cathedral, not finalized, in the spirit of Blue
-          Prince&rsquo;s mansion or Inscryption&rsquo;s cabin. It would hold
-          clues and puzzles that unlock new tokens, giving meta-progression a
-          second, non-battle mode of play instead of leaving all discovery to
-          random map events. This is genuinely early: shape, pacing, and how
-          it interleaves with the map are all still open, and the models for
-          it are still pending.
+          The table now sits inside a Gothic sanctuary, and the player
+          isn&rsquo;t stuck in the chair. From the hand view, between fights
+          or on their own idle turn mid-fight, one key stands them up and
+          hands the camera to a first-person walker; the board simply waits.
+          Pressing back, or just walking up to the table, sits them down and
+          blends the camera straight back into board view, in the spirit of
+          Inscryption&rsquo;s cabin or Blue Prince&rsquo;s mansion. The board
+          keeps its own key light while you&rsquo;re seated and hands the
+          room back to the baked sanctuary lighting when you stand, so the
+          table stays readable without the roof and tracery throwing shadows
+          across it.
+        </p>
+        <p>
+          The side chapels hold the game&rsquo;s unlockable tokens. Each one
+          is sealed behind a door with glowing hint glyphs, and the hint is a
+          puzzle: get a specific combination of tokens onto your side of the
+          board at the same time, whether summoned, spawned by an effect, or
+          taken over. Solve it mid-fight and the prize token appears next to
+          the one that completed it, while back in the sanctuary its door
+          sinks into the floor and the token stands in the chapel for good.
+        </p>
+        <p>
+          Under the hood a locked token is only filtered out of the
+          <em>player&rsquo;s</em> pools (deck, hand, offers, summons). The AI
+          and the analytics self-play still draw from everything, so balance
+          data always covers the whole roster no matter what a given save has
+          unlocked.
         </p>
       </section>
 
