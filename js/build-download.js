@@ -1,7 +1,8 @@
 (function () {
   // Password resets manually, at midnight GMT.
-  const PASSWORD = "a4n1j8Fnka&";
-  const DOWNLOAD_URL = "https://github.com/Flubzies/ZetaCore/releases/download/latest-build/Aljakun.zip";
+  const PASSWORD = "BuildPass110";
+  // Google Drive direct download (confirm=t skips the large-file virus-scan page).
+  const DOWNLOAD_URL = "https://drive.usercontent.google.com/download?id=1po8zID3_9ttbbJiVgMFggin4hLviw2oJ&export=download&confirm=t";
 
   const trigger = document.getElementById("buildDownloadBtn");
   const gate = document.getElementById("buildGate");
