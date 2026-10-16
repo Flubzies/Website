@@ -1,6 +1,6 @@
 (function () {
-  // Password resets manually, at midnight GMT.
-  const PASSWORD = "BuildPass110";
+  // Password resets manually, at midnight GMT. Current one is valid until the end of October 2026.
+  const PASSWORD = "AljakunBuildPasswordOctober2026";
   // Google Drive direct download (confirm=t skips the large-file virus-scan page).
   const DOWNLOAD_URL = "https://drive.usercontent.google.com/download?id=1po8zID3_9ttbbJiVgMFggin4hLviw2oJ&export=download&confirm=t";
 
