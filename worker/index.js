@@ -1,3 +1,5 @@
+import { PRIVATE_PREFIX, handlePrivate } from "./private.js";
+
 const GITHUB_REPO = "Flubzies/ZetaCore";
 const API_PATH = "/api/dev-history";
 const CACHE_TTL_SECONDS = 300;
@@ -9,6 +11,10 @@ export default {
 
     if (url.pathname === API_PATH) {
       return handleDevHistory(request, env, ctx);
+    }
+
+    if (url.pathname.startsWith(`${PRIVATE_PREFIX}/`)) {
+      return handlePrivate(request, env, url);
     }
 
     return env.ASSETS.fetch(request);

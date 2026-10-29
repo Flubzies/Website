@@ -5,5 +5,11 @@
 	"assets": {
 		"directory": "./",
 		"binding": "ASSETS"
-	}
+	},
+	"r2_buckets": [
+		{
+			"binding": "PRIVATE_MEDIA",
+			"bucket_name": "flubzies-private"
+		}
+	]
 }

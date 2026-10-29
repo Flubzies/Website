@@ -94,17 +94,6 @@
 
       <section class="devlog-section">
         <hr class="devlog-divider">
-        <div class="build-download">
-          <p>
-            Grab the latest Windows build, password-protected while
-            Aljakun is still in active development.
-          </p>
-          <button type="button" class="btn btn-primary build-download-btn" id="buildDownloadBtn">
-            Download
-            <svg class="build-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8"></rect><rect x="13" y="3" width="8" height="8"></rect><rect x="3" y="13" width="8" height="8"></rect><rect x="13" y="13" width="8" height="8"></rect></svg>
-            <svg class="build-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
-          </button>
-        </div>
         <details class="dev-history-fold" id="devHistoryFold">
           <summary>Development History <span class="dev-history-hint">(live from GitHub, click to expand)</span></summary>
           <div class="dev-history-body">
@@ -599,19 +588,6 @@
     </div>
   </main>
 
-  <div class="lock-gate" id="buildGate" hidden>
-    <div class="lock-gate-box">
-      <button type="button" class="lock-gate-close" id="buildGateClose" aria-label="Close">&times;</button>
-      <h2>Windows Build</h2>
-      <p>Enter today&rsquo;s password to download the latest build.</p>
-      <form class="lock-gate-form" id="buildGateForm">
-        <input type="password" class="lock-gate-input" id="buildGateInput" placeholder="Password" autocomplete="off" required>
-        <button type="submit" class="btn btn-primary">Unlock &amp; Download</button>
-      </form>
-      <p class="lock-gate-error" id="buildGateError" hidden>Incorrect password, try again.</p>
-    </div>
-  </div>
-
   <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="year"></span> Riley Clarke &middot; Games Programmer<span class="visually-hidden">Hidden text</span></p>
@@ -622,6 +598,5 @@
   <script src="../js/search-data.js"></script>
   <script src="../js/search.js"></script>
   <script src="../js/dev-history.js"></script>
-  <script src="../js/build-download.js"></script>
 </body>
 </html>

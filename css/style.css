@@ -602,6 +602,22 @@ html.locked .site-footer {
   height: 18px;
 }
 
+.devlog-section .private-title {
+  margin: 0 0 4px;
+}
+
+.private-media {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #000;
+}
+
+.private-empty {
+  color: var(--text-muted);
+}
+
 .project-meta {
   display: flex;
   flex-wrap: wrap;
