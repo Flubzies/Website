@@ -576,34 +576,13 @@ html.locked .site-footer {
   border-color: var(--accent);
 }
 
-.build-download {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.build-download p {
-  margin: 0;
-  color: var(--text-muted);
-}
-
-.build-download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.build-download-icon {
-  width: 18px;
-  height: 18px;
-}
-
 .devlog-section .private-title {
   margin: 0 0 4px;
+}
+
+.private-meta {
+  margin: 0 0 20px;
+  color: var(--text-muted);
 }
 
 .private-media {
@@ -612,10 +591,6 @@ html.locked .site-footer {
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: #000;
-}
-
-.private-empty {
-  color: var(--text-muted);
 }
 
 .project-meta {
