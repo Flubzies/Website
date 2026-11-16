@@ -16,5 +16,7 @@
 			"path": "../ZetaCore"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"workbench.colorTheme": "Abyss"
+	}
 }
