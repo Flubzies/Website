@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Injects shared HTML snippets from partials/ into every page, then
-regenerates sitemap.xml from the pages on disk.
+"""Injects shared HTML snippets from partials/ into every page, gives every
+page a <link rel="canonical"> matching its sitemap URL, then regenerates
+sitemap.xml from the pages on disk.
 
 Each partial is the single source of truth for one duplicated snippet.
 Edit the partial (or add a page), then run this script and commit the
@@ -46,6 +47,7 @@ def main():
                 print(f"updated {path.relative_to(ROOT)}")
     if not changed:
         print("all pages already match their partials")
+    write_canonicals()
     write_sitemap()
 
 
@@ -55,6 +57,28 @@ def page_url(path):
     if rel == "index.html":
         return SITE_URL + "/"
     return f"{SITE_URL}/{rel.removesuffix('.html')}"
+
+
+CANONICAL_TAG = re.compile(r'[ \t]*<link rel="canonical" href="[^"]*">\n')
+DESCRIPTION_LINE = re.compile(r'([ \t]*)<meta name="description"[^>]*>\n')
+
+
+def write_canonicals():
+    # The site answers on http://, with ?query strings, and through 307s from
+    # /page.html and /page/, so Google sees several URLs per page. The canonical
+    # tag names the one to index, and it is always the sitemap's URL.
+    for path in target_files():
+        text = path.read_text(encoding="utf-8")
+        new_text = CANONICAL_TAG.sub("", text)
+        match = DESCRIPTION_LINE.search(new_text)
+        if not match:
+            print(f"WARNING {path.relative_to(ROOT)} has no description meta; no canonical added")
+            continue
+        tag = f'{match.group(1)}<link rel="canonical" href="{page_url(path)}">\n'
+        new_text = new_text[: match.end()] + tag + new_text[match.end() :]
+        if new_text != text:
+            path.write_text(new_text, encoding="utf-8")
+            print(f"canonical {path.relative_to(ROOT)}")
 
 
 def write_sitemap():
