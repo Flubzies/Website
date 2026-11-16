@@ -7,3 +7,6 @@ wrangler.jsonc
 *.code-workspace
 .wrangler
 .vscode
+recordings
+steam
+.dev.vars*

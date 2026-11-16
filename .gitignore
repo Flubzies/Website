@@ -1,1 +1,14 @@
 .claude/
+# Raw recordings for scripts/make_clips.py; only each project's clips.json is kept.
+recordings/*/*
+!recordings/*/clips.json
+# Steam store art and trailer projects (scripts/steam_art.py). Kept local: this repo is public and the
+# PSDs and trailer previews are far over GitHub's 100 MB file limit.
+steam/
+
+# Local Worker secrets for wrangler dev; never commit or upload.
+.dev.vars*
+
+# Wrangler's local cache and personal editor settings.
+.wrangler/
+.vscode/

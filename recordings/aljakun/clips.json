@@ -1,0 +1,12 @@
+{
+  "gameplay_1": { "website": false, "steam_start": 14 },
+  "run-map-live": { "website": false },
+  "scroll-unfurl": { "website": false },
+  "zc-table-scene": { "website": false },
+  "zc-upgrade-embue": { "website": false },
+  "zc_critter-roster": { "website": false },
+  "zc_hero": { "website": false },
+  "zc_puzzle_unlocks": { "website": false, "steam_start": 1 },
+  "zc_tour": { "website": false },
+  "zc_upgrade_keeper": { "website": false }
+}
