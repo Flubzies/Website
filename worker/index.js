@@ -1,4 +1,5 @@
 import { PRIVATE_PREFIX, handlePrivate } from "./private.js";
+import { BUG_REPORT_PATH, handleBugReport } from "./bug-report.js";
 
 const GITHUB_REPO = "Flubzies/ZetaCore";
 const API_PATH = "/api/dev-history";
@@ -11,6 +12,10 @@ export default {
 
     if (url.pathname === API_PATH) {
       return handleDevHistory(request, env, ctx);
+    }
+
+    if (url.pathname === BUG_REPORT_PATH) {
+      return handleBugReport(request, env, ctx);
     }
 
     if (url.pathname.startsWith(`${PRIVATE_PREFIX}/`)) {
